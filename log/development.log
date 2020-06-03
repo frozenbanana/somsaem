@@ -537,3 +537,597 @@ DEPRECATION WARNING: Dangerous query method (method whose arguments are used as 
   ↳ lib/tasks/fae_tasks.rake:16:in `block (2 levels) in <main>'
   [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
   ↳ lib/tasks/fae_tasks.rake:16:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+Started GET "/" for 127.0.0.1 at 2020-06-03 16:56:37 +0200
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/index.html.erb within layouts/application (Duration: 43.5ms | Allocations: 2520)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 333ms (Views: 298.3ms | ActiveRecord: 0.0ms | Allocations: 32280)
+
+
+Started GET "/admin" for 127.0.0.1 at 2020-06-03 16:56:47 +0200
+Processing by Fae::PagesController#home as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (3.2ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+Redirected to http://127.0.0.1:3001/admin/first_user
+Filter chain halted as :first_user_redirect rendered or redirected
+Completed 302 Found in 391ms (ActiveRecord: 13.6ms | Allocations: 8965)
+
+
+Started GET "/admin/first_user" for 127.0.0.1 at 2020-06-03 16:56:48 +0200
+Processing by Fae::SetupController#first_user as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::Role Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "fae_roles" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFae::Option Load (0.6ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.6ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+  Rendering /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise (Duration: 449.3ms | Allocations: 33169)
+  [1m[36mFae::Image Load (0.7ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "favicon"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2491ms (ActiveRecord: 9.6ms | Allocations: 224943)
+
+
+  
+ActionView::Template::Error (Asset `fae/application.css` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link fae/application.css
+and restart your server):
+     6: 
+     7:     - if @option.favicon.present? && @option.favicon.asset.present?
+     8:       link href=@option.favicon.asset_url rel="shortcut icon"
+     9:     == stylesheet_link_tag    "fae/application", media: "all"
+    10:     == javascript_include_tag "fae/application"
+    11:     == csrf_meta_tags
+    12: 
+  
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:363:in `raise_unless_precompiled_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:348:in `find_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:229:in `block in lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `each'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `detect'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:228:in `lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:170:in `block in stylesheet_link_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:169:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:169:in `stylesheet_link_tag'
+fae-rails (1.7.1) app/views/layouts/devise.html.slim:9
+actionview (6.0.3.1) lib/action_view/base.rb:274:in `_run'
+actionview (6.0.3.1) lib/action_view/template.rb:185:in `block in render'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:182:in `instrument'
+actionview (6.0.3.1) lib/action_view/template.rb:385:in `instrument_render_template'
+actionview (6.0.3.1) lib/action_view/template.rb:183:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:69:in `render_with_layout'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:56:in `render_template'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:13:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (6.0.3.1) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (6.0.3.1) lib/action_view/base.rb:304:in `in_rendering_context'
+actionview (6.0.3.1) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (6.0.3.1) lib/action_controller/metal/streaming.rb:218:in `_render_template'
+actionview (6.0.3.1) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (6.0.3.1) lib/abstract_controller/rendering.rb:25:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `block in ms'
+/Users/user/.rbenv/versions/2.7.1/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+remotipart (1.3.1) lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+actionpack (6.0.3.1) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `public_send'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `method_missing'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:19:in `block in <class:Constraints>'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+remotipart (1.3.1) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/admin" for ::1 at 2020-06-03 16:56:52 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Fae::PagesController#home as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.3ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+Redirected to http://localhost:3000/admin/first_user
+Filter chain halted as :first_user_redirect rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms | Allocations: 2187)
+
+
+Started GET "/admin/first_user" for ::1 at 2020-06-03 16:56:52 +0200
+Processing by Fae::SetupController#first_user as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::Role Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "fae_roles" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFae::Option Load (0.3ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.3ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+  Rendering /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise (Duration: 138.9ms | Allocations: 12034)
+  [1m[36mFae::Image Load (0.4ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "favicon"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 400ms (ActiveRecord: 1.2ms | Allocations: 61404)
+
+
+  
+ActionView::Template::Error (Asset `fae/application.css` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link fae/application.css
+and restart your server):
+     6: 
+     7:     - if @option.favicon.present? && @option.favicon.asset.present?
+     8:       link href=@option.favicon.asset_url rel="shortcut icon"
+     9:     == stylesheet_link_tag    "fae/application", media: "all"
+    10:     == javascript_include_tag "fae/application"
+    11:     == csrf_meta_tags
+    12: 
+  
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:363:in `raise_unless_precompiled_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:348:in `find_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:229:in `block in lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `each'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `detect'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:228:in `lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:170:in `block in stylesheet_link_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:169:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:169:in `stylesheet_link_tag'
+fae-rails (1.7.1) app/views/layouts/devise.html.slim:9
+actionview (6.0.3.1) lib/action_view/base.rb:274:in `_run'
+actionview (6.0.3.1) lib/action_view/template.rb:185:in `block in render'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:182:in `instrument'
+actionview (6.0.3.1) lib/action_view/template.rb:385:in `instrument_render_template'
+actionview (6.0.3.1) lib/action_view/template.rb:183:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:69:in `render_with_layout'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:56:in `render_template'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:13:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (6.0.3.1) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (6.0.3.1) lib/action_view/base.rb:304:in `in_rendering_context'
+actionview (6.0.3.1) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (6.0.3.1) lib/action_controller/metal/streaming.rb:218:in `_render_template'
+actionview (6.0.3.1) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (6.0.3.1) lib/abstract_controller/rendering.rb:25:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `block in ms'
+/Users/user/.rbenv/versions/2.7.1/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+remotipart (1.3.1) lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+actionpack (6.0.3.1) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `public_send'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `method_missing'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:19:in `block in <class:Constraints>'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+remotipart (1.3.1) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+Started GET "/admin" for ::1 at 2020-06-03 16:58:37 +0200
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Fae::PagesController#home as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (2.1ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+Redirected to http://localhost:3000/admin/first_user
+Filter chain halted as :first_user_redirect rendered or redirected
+Completed 302 Found in 48ms (ActiveRecord: 4.1ms | Allocations: 7679)
+
+
+Started GET "/admin/first_user" for ::1 at 2020-06-03 16:58:37 +0200
+Processing by Fae::SetupController#first_user as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::Role Exists? (13.4ms)[0m  [1m[34mSELECT 1 AS one FROM "fae_roles" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFae::Option Load (0.8ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.1ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+  Rendering /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise (Duration: 108.8ms | Allocations: 28396)
+  [1m[36mFae::Image Load (0.9ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "favicon"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4555ms (ActiveRecord: 21.2ms | Allocations: 501021)
+
+
+  
+ActionView::Template::Error (Asset `fae/application.js` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link fae/application.js
+and restart your server):
+     7:     - if @option.favicon.present? && @option.favicon.asset.present?
+     8:       link href=@option.favicon.asset_url rel="shortcut icon"
+     9:     == stylesheet_link_tag    "fae/application", media: "all"
+    10:     == javascript_include_tag "fae/application"
+    11:     == csrf_meta_tags
+    12: 
+    13:   body.login-body
+  
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:363:in `raise_unless_precompiled_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:348:in `find_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:229:in `block in lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `each'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `detect'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:228:in `lookup_debug_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:141:in `block in javascript_include_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `javascript_include_tag'
+fae-rails (1.7.1) app/views/layouts/devise.html.slim:10
+actionview (6.0.3.1) lib/action_view/base.rb:274:in `_run'
+actionview (6.0.3.1) lib/action_view/template.rb:185:in `block in render'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:182:in `instrument'
+actionview (6.0.3.1) lib/action_view/template.rb:385:in `instrument_render_template'
+actionview (6.0.3.1) lib/action_view/template.rb:183:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:69:in `render_with_layout'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:56:in `render_template'
+actionview (6.0.3.1) lib/action_view/renderer/template_renderer.rb:13:in `render'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:61:in `render_template_to_object'
+actionview (6.0.3.1) lib/action_view/renderer/renderer.rb:29:in `render_to_object'
+actionview (6.0.3.1) lib/action_view/rendering.rb:117:in `block in _render_template'
+actionview (6.0.3.1) lib/action_view/base.rb:304:in `in_rendering_context'
+actionview (6.0.3.1) lib/action_view/rendering.rb:116:in `_render_template'
+actionpack (6.0.3.1) lib/action_controller/metal/streaming.rb:218:in `_render_template'
+actionview (6.0.3.1) lib/action_view/rendering.rb:103:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (6.0.3.1) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (6.0.3.1) lib/abstract_controller/rendering.rb:25:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `block in ms'
+/Users/user/.rbenv/versions/2.7.1/lib/ruby/2.7.0/benchmark.rb:308:in `realtime'
+activesupport (6.0.3.1) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:34:in `cleanup_view_runtime'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+remotipart (1.3.1) lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+actionpack (6.0.3.1) lib/action_controller/metal/implicit_render.rb:35:in `default_render'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `public_send'
+railties (6.0.3.1) lib/rails/railtie.rb:190:in `method_missing'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:19:in `block in <class:Constraints>'
+actionpack (6.0.3.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+remotipart (1.3.1) lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.2) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.2) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.2) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+Started GET "/" for 127.0.0.1 at 2020-06-03 17:00:14 +0200
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/index.html.erb within layouts/application (Duration: 164.3ms | Allocations: 2406)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1050ms (Views: 992.8ms | ActiveRecord: 0.0ms | Allocations: 92199)
+
+
+Started GET "/admin" for 127.0.0.1 at 2020-06-03 17:00:19 +0200
+Processing by Fae::PagesController#home as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.9ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+Redirected to http://127.0.0.1:3000/admin/first_user
+Filter chain halted as :first_user_redirect rendered or redirected
+Completed 302 Found in 80ms (ActiveRecord: 2.9ms | Allocations: 7688)
+
+
+Started GET "/admin/first_user" for 127.0.0.1 at 2020-06-03 17:00:19 +0200
+Processing by Fae::SetupController#first_user as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::Role Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "fae_roles" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFae::Option Load (0.8ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.1ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+  Rendering /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise (Duration: 85.1ms | Allocations: 28271)
+  [1m[36mFae::Image Load (0.8ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "favicon"], ["LIMIT", 1]]
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/application/_flash_messages.slim (Duration: 3.9ms | Allocations: 2310)
+  [1m[36mFae::Image Load (11.3ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "logo"], ["LIMIT", 1]]
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/application/_credit.slim (Duration: 91.2ms | Allocations: 21176)
+Completed 200 OK in 566ms (Views: 423.3ms | ActiveRecord: 26.2ms | Allocations: 137399)
+
+
+Started GET "/admin" for ::1 at 2020-06-03 17:00:31 +0200
+Processing by Fae::PagesController#home as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (8.7ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+Redirected to http://localhost:3000/admin/first_user
+Filter chain halted as :first_user_redirect rendered or redirected
+Completed 302 Found in 15ms (ActiveRecord: 8.7ms | Allocations: 2134)
+
+
+Started GET "/admin/first_user" for ::1 at 2020-06-03 17:00:31 +0200
+Processing by Fae::SetupController#first_user as HTML
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::Role Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "fae_roles" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mFae::Option Load (2.6ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from preprocess_order_args at /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-6.0.3.1/lib/active_record/relation/query_methods.rb:1296)
+  [1m[36mFae::User Load (0.2ms)[0m  [1m[34mSELECT "fae_users".* FROM "fae_users" INNER JOIN "fae_roles" ON "fae_roles"."id" = "fae_users"."role_id" WHERE "fae_users"."active" = ? AND "fae_roles"."name" = ? ORDER BY "fae_users"."first_name" ASC, "fae_users"."last_name" ASC[0m  [["active", 1], ["name", "super admin"]]
+  Rendering /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/setup/first_user.html.slim within layouts/devise (Duration: 66.9ms | Allocations: 11990)
+  [1m[36mFae::Image Load (1.0ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "favicon"], ["LIMIT", 1]]
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/application/_flash_messages.slim (Duration: 0.1ms | Allocations: 18)
+  [1m[36mFae::Image Load (0.2ms)[0m  [1m[34mSELECT "fae_images".* FROM "fae_images" WHERE "fae_images"."imageable_id" = ? AND "fae_images"."imageable_type" = ? AND "fae_images"."attached_as" = ? LIMIT ?[0m  [["imageable_id", 1], ["imageable_type", "Fae::Option"], ["attached_as", "logo"], ["LIMIT", 1]]
+  Rendered /Users/user/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/fae-rails-1.7.1/app/views/fae/application/_credit.slim (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 198ms (Views: 171.3ms | ActiveRecord: 4.6ms | Allocations: 52826)
+
+
