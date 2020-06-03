@@ -28,3 +28,512 @@ Entrypoint hello_react = js/hello_react-649a1b62bf547dab27a7.js js/hello_react-6
 Completed 200 OK in 10481ms (Views: 10465.9ms | ActiveRecord: 0.0ms | Allocations: 21144)
 
 
+Started GET "/" for 127.0.0.1 at 2020-06-02 19:28:26 +0200
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 2347)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 50.1ms | ActiveRecord: 0.0ms | Allocations: 9423)
+
+
+Started GET "/" for ::1 at 2020-06-02 19:29:50 +0200
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/index.html.erb within layouts/application (Duration: 48.4ms | Allocations: 2130)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 193ms (Views: 189.6ms | ActiveRecord: 0.0ms | Allocations: 5782)
+
+
+Started GET "/" for 127.0.0.1 at 2020-06-02 19:45:57 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered pages/index.html.erb within layouts/application (Duration: 41.5ms | Allocations: 2129)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 79ms (Views: 68.6ms | ActiveRecord: 0.0ms | Allocations: 5818)
+
+
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+These autoloaded constants have been unloaded.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserTable (20200603144702)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:4)
+  [1m[36mFae::Role Destroy (0.4ms)[0m  [1m[31mDELETE FROM "fae_roles" WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserTable (20200603144702)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:4)
+  [1m[36mFae::Role Destroy (0.6ms)[0m  [1m[31mDELETE FROM "fae_roles" WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserTable (20200603144702)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "fae_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "first_name" varchar, "last_name" varchar, "role_id" integer, "active" boolean, "language" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_fae_users_on_email" ON "fae_users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_fae_users_on_reset_password_token" ON "fae_users" ("reset_password_token")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_fae_users_on_confirmation_token" ON "fae_users" ("confirmation_token")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_fae_users_on_unlock_token" ON "fae_users" ("unlock_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_fae_users_on_role_id" ON "fae_users" ("role_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144702"]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeRoles (20200603144703)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:4)
+  [1m[36mFae::Role Destroy (0.6ms)[0m  [1m[31mDELETE FROM "fae_roles" WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFaeRoles (20200603144703)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:4)
+  [1m[36mFae::Role Destroy (0.3ms)[0m  [1m[31mDELETE FROM "fae_roles" WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFaeRoles (20200603144703)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "fae_roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "position" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144703"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeImagesTable (20200603144704)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "fae_images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "asset" varchar, "imageable_type" varchar, "imageable_id" integer, "alt" varchar, "caption" varchar, "position" integer DEFAULT 0, "attached_as" varchar, "on_stage" boolean DEFAULT 1, "on_prod" boolean DEFAULT 0, "file_size" integer, "required" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_images_on_imageable_type_and_imageable_id" ON "fae_images" ("imageable_type", "imageable_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_images_on_attached_as" ON "fae_images" ("attached_as")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144704"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeOptions (20200603144705)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "fae_options" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "time_zone" varchar, "colorway" varchar, "stage_url" varchar, "live_url" varchar, "singleton_guard" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_fae_options_on_singleton_guard" ON "fae_options" ("singleton_guard")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144705"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeFiles (20200603144706)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "fae_files" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "asset" varchar, "fileable_type" varchar, "fileable_id" integer, "file_size" integer, "position" integer DEFAULT 0, "attached_as" varchar, "on_stage" boolean DEFAULT 1, "on_prod" boolean DEFAULT 0, "required" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_files_on_fileable_type_and_fileable_id" ON "fae_files" ("fileable_type", "fileable_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_files_on_attached_as" ON "fae_files" ("attached_as")[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144706"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeTextAreas (20200603144707)
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "fae_text_areas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "label" varchar, "content" text, "position" integer DEFAULT 0, "on_stage" boolean DEFAULT 1, "on_prod" boolean DEFAULT 0, "contentable_id" integer, "contentable_type" varchar, "attached_as" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_position" ON "fae_text_areas" ("position")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_on_stage" ON "fae_text_areas" ("on_stage")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_on_prod" ON "fae_text_areas" ("on_prod")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_contentable_id" ON "fae_text_areas" ("contentable_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_contentable_type" ON "fae_text_areas" ("contentable_type")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_areas_on_attached_as" ON "fae_text_areas" ("attached_as")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144707"]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaePages (20200603144708)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "fae_static_pages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "position" integer DEFAULT 0, "on_stage" boolean DEFAULT 1, "on_prod" boolean DEFAULT 0, "slug" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_fae_static_pages_on_slug" ON "fae_static_pages" ("slug")[0m
+  [1m[36mprimary::SchemaMigration Create (3.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144708"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeTextFields (20200603144709)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "fae_text_fields" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "contentable_type" varchar, "contentable_id" integer, "attached_as" varchar, "label" varchar, "content" varchar, "position" integer DEFAULT 0, "on_stage" boolean DEFAULT 1, "on_prod" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_fields_on_contentable_type_and_contentable_id" ON "fae_text_fields" ("contentable_type", "contentable_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_fields_on_attached_as" ON "fae_text_fields" ("attached_as")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_fields_on_position" ON "fae_text_fields" ("position")[0m
+  [1m[35m (28.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_fields_on_on_stage" ON "fae_text_fields" ("on_stage")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_text_fields_on_on_prod" ON "fae_text_fields" ("on_prod")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144709"]]
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFaeChanges (20200603144710)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "fae_changes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "changeable_id" integer, "changeable_type" varchar, "user_id" integer, "change_type" varchar, "updated_attributes" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_fae_changes_on_changeable_id" ON "fae_changes" ("changeable_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_fae_changes_on_changeable_type" ON "fae_changes" ("changeable_type")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_fae_changes_on_user_id" ON "fae_changes" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200603144710"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-03 14:55:30.613774"], ["updated_at", "2020-06-03 14:55:30.613774"]]
+  [1m[35m (17.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Initialization autoloaded the constants Fae::BaseModelConcern, Fae::Trackable, Fae::Sortable, Fae::UserConcern, Fae::User, ActionText::ContentHelper, and ActionText::TagHelper.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload Fae::BaseModelConcern, for example,
+the expected changes won't be reflected in that stale Module object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <main> at /Users/user/Code/somsaem/config/environment.rb:5)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:4)
+  [1m[36mFae::Role Destroy (0.1ms)[0m  [1m[31mDELETE FROM "fae_roles" WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:4:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:5)
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:5:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Update All (0.5ms)[0m  [1m[33mUPDATE "fae_roles" SET "position" = ("fae_roles"."position" + 1), "updated_at" = '2020-06-03 14:55:38.667494' WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" WHERE (1 = 1) AND ("fae_roles"."position" >= 1) ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:5:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Create (0.6ms)[0m  [1m[32mINSERT INTO "fae_roles" ("name", "position", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "super admin"], ["position", 1], ["created_at", "2020-06-03 14:55:38.664422"], ["updated_at", "2020-06-03 14:55:38.664422"]]
+  ↳ lib/tasks/fae_tasks.rake:5:in `block (2 levels) in <main>'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:5:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:6)
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:6)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:6:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Update All (0.4ms)[0m  [1m[33mUPDATE "fae_roles" SET "position" = ("fae_roles"."position" + 1), "updated_at" = '2020-06-03 14:55:38.681235' WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" WHERE (1 = 1) AND ("fae_roles"."position" >= 1) ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:6:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Create (0.2ms)[0m  [1m[32mINSERT INTO "fae_roles" ("name", "position", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "admin"], ["position", 1], ["created_at", "2020-06-03 14:55:38.680107"], ["updated_at", "2020-06-03 14:55:38.680107"]]
+  ↳ lib/tasks/fae_tasks.rake:6:in `block (2 levels) in <main>'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:6:in `block (2 levels) in <main>'
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:7)
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "-position DESC". Non-attribute arguments will be disallowed in Rails 6.1. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from block (2 levels) in <main> at /Users/user/Code/somsaem/lib/tasks/fae_tasks.rake:7)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:7:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Update All (0.4ms)[0m  [1m[33mUPDATE "fae_roles" SET "position" = ("fae_roles"."position" + 1), "updated_at" = '2020-06-03 14:55:38.689071' WHERE "fae_roles"."id" IN (SELECT "fae_roles"."id" FROM "fae_roles" WHERE (1 = 1) AND ("fae_roles"."position" >= 2) ORDER BY -position DESC)[0m
+  ↳ lib/tasks/fae_tasks.rake:7:in `block (2 levels) in <main>'
+  [1m[36mFae::Role Create (0.3ms)[0m  [1m[32mINSERT INTO "fae_roles" ("name", "position", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "user"], ["position", 2], ["created_at", "2020-06-03 14:55:38.688552"], ["updated_at", "2020-06-03 14:55:38.688552"]]
+  ↳ lib/tasks/fae_tasks.rake:7:in `block (2 levels) in <main>'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:7:in `block (2 levels) in <main>'
+  [1m[36mFae::Option Load (0.2ms)[0m  [1m[34mSELECT "fae_options".* FROM "fae_options" ORDER BY "fae_options"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ lib/tasks/fae_tasks.rake:9:in `block (2 levels) in <main>'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:16:in `block (2 levels) in <main>'
+  [1m[36mFae::Option Create (0.5ms)[0m  [1m[32mINSERT INTO "fae_options" ("title", "time_zone", "live_url", "singleton_guard", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "My FINE Admin"], ["time_zone", "Pacific Time (US & Canada)"], ["live_url", "http://www.wearefine.com"], ["singleton_guard", 0], ["created_at", "2020-06-03 14:55:38.723905"], ["updated_at", "2020-06-03 14:55:38.723905"]]
+  ↳ lib/tasks/fae_tasks.rake:16:in `block (2 levels) in <main>'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ lib/tasks/fae_tasks.rake:16:in `block (2 levels) in <main>'
