@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link fae/application.css
 //= link fae/application.js
+//= link graphiql/rails/application.css
