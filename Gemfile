@@ -27,7 +27,12 @@ gem 'jbuilder', '~> 2.7'
 
 # Fae-cms
 gem 'fae-rails'
+# graphQL
+gem 'graphql'
 
+# sass
+#gem 'sass-rails', '~> 5.0.0'
+gem 'sass', '~> 3.4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
