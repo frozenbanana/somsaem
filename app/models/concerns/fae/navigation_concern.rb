@@ -25,6 +25,8 @@ module Fae
 
     def structure
       [
+        item('Article Categories', path: admin_article_categories_path),
+        item('Articles', path: admin_articles_path),
         # scaffold inject marker
       ]
     end
