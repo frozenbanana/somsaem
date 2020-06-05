@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Added while Developing
 gem 'fae-rails'
+gem 'devise'
 
 
 group :development, :test do

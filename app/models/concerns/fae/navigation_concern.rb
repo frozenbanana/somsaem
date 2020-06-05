@@ -27,6 +27,9 @@ module Fae
       [
         item('Article Categories', path: admin_article_categories_path),
         item('Articles', path: admin_articles_path),
+        item('Device Types', path: admin_device_types_path),
+        item('Device Brands', path: admin_device_brands_path),
+        item('Devices', path: admin_devices_path),
         # scaffold inject marker
       ]
     end
