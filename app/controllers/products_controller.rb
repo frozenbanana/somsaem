@@ -68,12 +68,6 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def is_admin?
-      # check if user is a admin
-      # if not admin then redirect to where ever you want 
-      redirect_to root_path unless current_user.admin? 
-    end
-
     # Only allow a list of trusted parameters through.
     def product_params
       # params.fetch(:product, {})
