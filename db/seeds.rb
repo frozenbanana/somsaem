@@ -11,3 +11,11 @@ Product.create(name: 'Stuff', description: 'Tastes great!', quantity: 69, price:
 Product.create(name: 'You know', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
 Product.create(name: 'This one', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
 Product.create(name: 'Good', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
+
+Repairable.create(model: 'Iphone 6s', manufacturer: 'Apple', model_year: 2016);
+Repairable.create(model: 'Iphone 7', manufacturer: 'Apple', model_year: 2017);
+Repairable.create(model: 'Iphone 7+', manufacturer: 'Apple', model_year: 2017);
+Repairable.create(model: 'Iphone 8', manufacturer: 'Apple', model_year: 2018);
+Repairable.create(model: 'Galaxy S7', manufacturer: 'Samsung', model_year: 2017);
+Repairable.create(model: 'Galaxy S8', manufacturer: 'Samsung', model_year: 2018);
+Repairable.create(model: 'Galaxy S9', manufacturer: 'Samsung', model_year: 2018);

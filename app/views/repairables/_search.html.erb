@@ -1,0 +1,39 @@
+<h1>Search for repairables</h1>
+
+<%= form_for :search_index, url: search_index_path, method: :get do |form| %>
+  <%= form.text_field :query, value: params[:search].presence && params[:search][:query] %>
+  <%= form.submit 'search' %>
+<% end %>
+
+<%# <input type="text" name="query" id="query" placeholder="I want to find..">
+<input type="submit" name="commit" value="Search" class="btn btn-default"> %>
+
+
+<% unless @repairables.nil? %>
+  <% if @repairables.empty? %>
+    <h2>No repairables found matching your query.</h2>
+  <% else %>
+    <h2>Search results</h2>
+
+    <table style="width: 100%;">
+      <thead>
+         <tr>
+           <th>Model</th>
+           <th>Manufacturer</th>
+           <th>Model Year</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @repairables.each do |repairable| %>
+          <tr>
+            <td><%= repairable.model %></td>
+            <td><%= repairable.manufacturer %></td>
+            <td><%= repairable.model_year %></td>
+            <td><%= link_to 'View', repairable_path(repairable.id) %></td>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% end %>
+<% end %>
