@@ -23,7 +23,7 @@ class Search extends React.Component {
         console.log('Starting fetchSearchResult..');
         const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : '';
         // By default the limit of results is 20
-        const searchUrl = `http://localhost:3000/products.json`;
+        const searchUrl = `http://localhost:3000/search/index?search_index%5Bquery%5D=${query}`;
         console.log(`Starting fetchSearchResult with url: ${searchUrl}`);
         if (this.cancel) {
             // Cancel the previous request before making a new request
@@ -33,7 +33,6 @@ class Search extends React.Component {
         this.cancel = axios.CancelToken.source();
         axios
             .get(searchUrl, {
-                headers: {"Access-Control-Allow-Origin": "*"},
                 cancelToken: this.cancel.token,
             })
             .then((res) => {

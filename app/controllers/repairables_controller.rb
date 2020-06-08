@@ -4,16 +4,12 @@ class RepairablesController < ApplicationController
   # GET /repairables
   # GET /repairables.json
   def index
-    if params[:search] === "" 
+    if not params[:search].present?
       @repairables = Repairable.all
     else
       @repairables = Repairable.search(params[:search])
     end
-  end
 
-  # GET /repairables/search
-  def search
-    @repairables = Repairable.search(params[:search])
   end
 
   # GET /repairables/1

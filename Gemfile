@@ -31,6 +31,10 @@ gem 'pg_search'
 # Cors enabled for React to make API requests
 gem 'rack-cors', :require => 'rack/cors'
 
+# Debugging
+gem 'ruby-debug-ide'
+gem 'debase'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
