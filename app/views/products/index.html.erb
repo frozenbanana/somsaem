@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<%= render "search" %>
 
-
-<div class="row"> 
-<%= render @products %>
+<%# <div class="row">  %>
+<%# <%= render @products %>
 <%# <%= render partial: "productCard", collection: @products %> 
-
-</div>
+<%# </div> %>
 <br>
 
 <%= link_to 'New Product', new_product_path %>

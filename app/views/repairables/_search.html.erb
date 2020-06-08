@@ -4,7 +4,6 @@
 
 <setion class="row">
 <%= form_tag repairables_path, url: repairables_path, method: :get do %>
-  <%#= form.text_field :query, value: params[:search].presence && params[:search][:query] %>
   <%=text_field_tag :search %>
   <%=submit_tag 'search', name: nil %>
 <% end %>
