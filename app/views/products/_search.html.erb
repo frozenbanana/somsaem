@@ -10,18 +10,19 @@
 </div> 
 
 
-<setion class="row">
 
 <% unless @products.nil? %>
-  <% if @products.empty? %>
-    <h2>No products found matching your query.</h2>
-  <% else %>
+    <div class="row"> 
         <h2>Results</h2>
-
+    </div>
+  <% if @products.empty? %>
+    <div class="row"> 
+        <h2>No products found matching your query.</h2>
+    </div>
+  <% else %>
     <div class="row"> 
         <%= render @products %>
     </div>
     <% end %>
 <% end %>
 
-</setion>
