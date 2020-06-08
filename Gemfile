@@ -28,6 +28,9 @@ gem 'devise'
 # Searching repairables
 gem 'pg_search'
 
+# Cors enabled for React to make API requests
+gem 'rack-cors', :require => 'rack/cors'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -40,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
