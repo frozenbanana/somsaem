@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, :is_admin?, :set_cart, only: [:admin]
+  before_action :authenticate_user!, :is_admin?, only: [:admin]
 
   def index
   end
