@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+  resources :line_items
+  resources :carts, only: [:new, :create, :show]
   get 'search/index'
   devise_for :users
   resources :products

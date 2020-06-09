@@ -9,6 +9,7 @@
     <a class="py-2 d-none d-md-inline-block" href="#">Sell Device</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+
     <% if current_user %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'py-2 d-none d-md-inline-block'%>
       <% if current_user.admin? %>
