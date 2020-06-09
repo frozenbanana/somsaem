@@ -22,15 +22,24 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# devise for authentication/authorization
+gem 'devise'
+
+# Searching repairables
+gem 'pg_search'
+
+# Cors enabled for React to make API requests
+gem 'rack-cors', :require => 'rack/cors'
+
+# Debugging
+gem 'ruby-debug-ide'
+gem 'debase'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
-# Added while Developing
-gem 'fae-rails'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -38,12 +47,14 @@ group :development, :test do
 end
 
 group :development do
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry'
 end
 
 group :test do

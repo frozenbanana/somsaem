@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :articles
-    resources :article_categories
-  end
-  # mount Fae below your admin namespec
-  mount Fae::Engine => '/admin'
+
   
-  root 'pages#index'
-   # Pass all routes to page#index making React router manage everything
-  get '*path', to: 'pages#index', via: :all 
+  resources :line_items
+  resources :carts, only: [:new, :create, :show]
+  get 'search/index'
+  devise_for :users
+  resources :products
+  resources :repairables
+  resources :search, only: [:index]
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'pages#index'
 
-
+  get '/admin', :to => 'pages#admin'
 end
