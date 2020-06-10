@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_cart
+    helper_method :is_admin?
 
     private
 
@@ -9,10 +10,12 @@ class ApplicationController < ActionController::Base
     end
 
     def is_admin?
-      if current_user.admin?
-      else
-        respond_to do |format|
-          format.html {redirect_to root_path}
+      if current_user
+        if current_user.admin?
+        else
+          respond_to do |format|
+            format.html {redirect_to root_path}
+          end
         end
       end
     end

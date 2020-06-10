@@ -11,10 +11,7 @@ class CartsController < ApplicationController
       @cart.line_items.each do |item|
         @products.push(Product.find(item.product_id))
       end
-      @total = 0
-      @products.each do |product|
-        @total+=product.price
-      end
+      @total_price = @cart.total_price
       # binding.pry
       respond_to do |format|
         format.html { render :show }
