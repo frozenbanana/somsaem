@@ -11,7 +11,7 @@ class SellForm extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      model: "",
+      model: null,
       modelOptions: [
         { value: 'iphone5', label: 'iPhone 6' },
         { value: 'iphone5s', label: 'iPhone 5s' },
@@ -32,18 +32,18 @@ class SellForm extends React.Component {
         { value: 'galaxys10', label: 'Galaxy S10' },
         { value: 'galaxys20', label: 'Galaxy S20' },
       ],
-      manufacturer: "",
+      manufacturer: null,
       manufacturerOption: [
         { value: 'apple', label: 'Apple' },
         { value: 'samsung', label: 'Samsung' },
       ],
-      color: "",
+      color: null,
       colorOptions: [
         { value: 'black', label: 'Black' },
         { value: 'white', label: 'White' },
         { value: 'red', label: 'Other' },
       ],
-      storage: "",
+      storage: null,
       storageOptions: [
         { value: '8', label: '8 GB' },
         { value: '16', label: '16 GB' },
@@ -51,7 +51,7 @@ class SellForm extends React.Component {
         { value: '64', label: '64 GB' },
         { value: '128', label: '128 GB' },
       ],
-      condition: "",
+      condition: null,
       conditionOptions: [
         { value: "1.0", label: 'Perfect' },
         { value: "0.8", label: 'Good' },
@@ -79,14 +79,20 @@ class SellForm extends React.Component {
     };
   }
 
-  handleChange = (key, selectedOption) => {
+  handleCheckboxChange = (event) => {
+    const key = event.target.id;
+    this.setState({ [key]: !this.state[key] }, () => this.calcPrice());
+  }
+
+  handleSelectionChange = (key, selectedOption) => {
     console.log(key, selectedOption);
     if (Array.isArray(selectedOption)) {
       this.setState({ [key]: selectedOption.map(el => el.value) }, () => this.calcPrice());
+    } else if (selectedOption) {
+      this.setState({ [key]: selectedOption.value }, () => this.calcPrice());
     } else {
-      this.setState({ [key]: selectedOption.value }, () => () => this.calcPrice());
+      this.setState({ [key]: null }, () => () => this.calcPrice());
     }
-
   }
 
   handleSubmit = (event) => {
@@ -95,16 +101,18 @@ class SellForm extends React.Component {
   }
 
   calcPrice = () => {
-    const { model, manufacturer, storage, condition, previousRepairs } = this.state;
-    // model && brand && storage && condition && previousRepairs
-    console.log('state', this.state);
-    console.log('hmm',model, manufacturer, storage, condition, previousRepairs);
+    const { model, manufacturer, storage, condition, previousRepairs, operatorLocked, cloudLocked} = this.state;
+    // console.log('hmm',model, manufacturer, storage, condition, previousRepairs, operatorLocked, cloudLocked);
 
-    if (model !== "" && manufacturer !== "" && storage !== "" && condition !== "") {
+    if (model && manufacturer && storage && condition) {
       // TODO: Call api instead
       const conditionFactor = parseInt(condition);
-      const prevRepairFactor = 1 / (previousRepairs.length + 1);
-      const storageFactor = parseInt(storage) / 16;
+      let repairLen = 0;
+      if (previousRepairs.length) {
+        repairLen = previousRepairs.length;
+      }
+      const prevRepairFactor = 1 / (repairLen + 1);
+      const storageFactor = parseInt(storage) / 64;
       let price = 0;
       if (manufacturer.toLowerCase() < "apple") {
         if (model.toLowerCase().includes("iphone")) {
@@ -119,8 +127,9 @@ class SellForm extends React.Component {
           price += 700;
         }
       }
-      price += 1400 * storageFactor * conditionFactor * prevRepairFactor;
+      price += 1600 * storageFactor * conditionFactor * prevRepairFactor;
       price = Math.round(price - price % 25);
+      price = operatorLocked || cloudLocked ? price * 0.25 : price;
       this.setState({ estimated_price: price });
     } else {
       this.setState({ estimated_price: "More information please..." });
@@ -151,7 +160,7 @@ class SellForm extends React.Component {
           <li key={stepObj.step} className={this.styleStep(formStep, stepObj.step)}>
             <div>
               <h6 className="my-0">{stepObj.title}</h6>
-              <small className="text-muted">{stepObj.description}</small>
+              <small className={formStep > stepObj.step ? "text-success" :"text-muted"}>{stepObj.description}</small>
             </div>
           </li>)}
 
@@ -179,14 +188,14 @@ class SellForm extends React.Component {
             <div className="row">
               <div className="col-md-6 mb-3">
                 <label htmlFor="model">Model*</label>
-                <Select onChange={e => this.handleChange(fieldKeys[0], e)} options={modelOptions} />
+                <Select autoFocus onChange={e => this.handleSelectionChange(fieldKeys[0], e)} options={modelOptions} />
                 <div className="invalid-feedback">
                   Valid model is required.
           </div>
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="manufacturer">Manufacturer*</label>
-                <Select onChange={e => this.handleChange(fieldKeys[1], e)} options={manufacturerOption} />
+                <Select onChange={e => this.handleSelectionChange(fieldKeys[1], e)} options={manufacturerOption} />
                 <div className="invalid-feedback">
                   Valid Manufacturer is required.
           </div>
@@ -196,7 +205,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="condition">Condition*</label>
-                <Select onChange={e => this.handleChange(fieldKeys[2], e)} options={conditionOptions} />
+                <Select onChange={e => this.handleSelectionChange(fieldKeys[2], e)} options={conditionOptions} />
                 <div className="invalid-feedback">
                   Please select a valid condition.
                 </div>
@@ -204,7 +213,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="storage">Internal Storage*</label>
-                <Select  onChange={e => this.handleChange(fieldKeys[3], e)} options={storageOptions} />
+                <Select  onChange={e => this.handleSelectionChange(fieldKeys[3], e)} options={storageOptions} />
                 <div className="invalid-feedback">
                   Please provide a valid internal storage.
           </div>
@@ -214,7 +223,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="color">Color</label>
-                <Select onChange={e => this.handleChange(fieldKeys[4], e)} options={colorOptions} />
+                <Select onChange={e => this.handleSelectionChange(fieldKeys[4], e)} options={colorOptions} />
                 <div className="invalid-feedback">
                   Please select a valid color.
                    </div>
@@ -222,7 +231,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="previousRepairs">Previous Repairs</label>
-                <Select onChange={e => this.handleChange(fieldKeys[5], e) } isMulti  options={repairOptions} />
+                <Select onChange={e => this.handleSelectionChange(fieldKeys[5], e) } isMulti  options={repairOptions} />
                 <div className="invalid-feedback">
                   Please select a valid condition.
                   </div>
@@ -231,21 +240,21 @@ class SellForm extends React.Component {
             <div className="row">
               <div className="col-md-6 mb-3">
                 <div className="custom-control custom-checkbox">
-                  <input type="checkbox" className="custom-control-input" onChange={this.handleChange}
+                  <input type="checkbox" className="custom-control-input" onChange={this.handleCheckboxChange}
                     id="operatorLocked" />
                   <label className="custom-control-label" htmlFor="operatorLocked">Operator Locked</label>
                 </div>
               </div>
               <div className="col-md-6 mb-3">
                 <div className="custom-control custom-checkbox">
-                  <input type="checkbox" className="custom-control-input" onChange={this.handleChange} id="cloudLocked" />
+                  <input type="checkbox" className="custom-control-input" onChange={this.handleCheckboxChange} id="cloudLocked" />
                   <label className="custom-control-label" htmlFor="cloudLocked">iCloud Locked</label>
                 </div>
               </div>
             </div>
             <hr className="mb-4" />
             <h5 className="mb-3">Your estimated price: {this.state.estimated_price} SEK </h5>
-            <button className="btn btn-primary btn-lg btn-block">Next</button>
+            <button className="btn btn-primary btn-lg btn-block" type="button" onClick={this.handleSubmit}>Next</button>
           </form>
         </div>
         {this.renderLedger()}
