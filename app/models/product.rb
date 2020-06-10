@@ -1,3 +1,4 @@
+require 'csv'
 class Product < ApplicationRecord
     has_one_attached :productimage
     has_many :line_items
@@ -7,6 +8,19 @@ class Product < ApplicationRecord
 
     before_destroy :not_referenced_by_any_line_item
     belongs_to :user, optional: true
+
+    def self.import(file)
+      CSV.foreach(file.path, headers:true) do |row|
+        product = Product.new
+        product.name = row[0]
+        product.manufacturer = row[1]
+        product.model = row[2]
+        product.description = row[3]
+        product.quantity = row[4]
+        product.price = row[5]
+        product.save
+      end
+    end
 
     private
   

@@ -1,0 +1,6 @@
+<%= form_tag admin_import_path, multipart: true do %>
+    <div class="form-group">
+       <%= file_field_tag :file %>
+       <%= submit_tag "Upload CSV" %>
+    </div>
+<% end %>

@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   get 'sales', to: 'sales#index'
 
-  get '/admin', :to => 'pages#admin'
+  get '/admin/import', :to => 'admin#newimport'
+  post '/admin/import', :to => 'admin#createimport'
+  resources :admin
+
 end
