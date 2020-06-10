@@ -79,35 +79,30 @@ class SellForm extends React.Component {
     };
   }
 
-  handleChange = (event) => {
-    const key = event.target.id;
-    this.setState({ [key]: event.target.value });
-    this.calcPrice();
-  }
-
-  handlePreviousRepairChange = event => {
-    let prevRep = this.state.previousRepairs;
-    if (!prevRep.includes(event.target.value)) {
-      prevRep.push(event.target.value);
-      console.log('New element added', prevRep);
+  handleChange = (key, selectedOption) => {
+    console.log(key, selectedOption);
+    if (Array.isArray(selectedOption)) {
+      this.setState({ [key]: selectedOption.map(el => el.value) }, () => this.calcPrice());
+    } else {
+      this.setState({ [key]: selectedOption.value }, () => () => this.calcPrice());
     }
-    this.setState({ previousRepairs: prevRep });
+
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     const { formStep } = this.state;
-    console.log('formstep', formstep, this.state.formstep, this.state)
     this.setState({ formStep: formStep + 1 })
   }
 
   calcPrice = () => {
     const { model, manufacturer, storage, condition, previousRepairs } = this.state;
     // model && brand && storage && condition && previousRepairs
-    console.log(model, manufacturer, storage, condition);
+    console.log('state', this.state);
+    console.log('hmm',model, manufacturer, storage, condition, previousRepairs);
 
     if (model !== "" && manufacturer !== "" && storage !== "" && condition !== "") {
       // TODO: Call api instead
-      const conditionFactor = parseInt(condition) / 3;
+      const conditionFactor = parseInt(condition);
       const prevRepairFactor = 1 / (previousRepairs.length + 1);
       const storageFactor = parseInt(storage) / 16;
       let price = 0;
@@ -128,7 +123,7 @@ class SellForm extends React.Component {
       price = Math.round(price - price % 25);
       this.setState({ estimated_price: price });
     } else {
-      this.setState({ estimated_price: "..give me some more information please..." });
+      this.setState({ estimated_price: "More information please..." });
 
     }
   }
@@ -174,6 +169,7 @@ class SellForm extends React.Component {
       conditionOptions,
       repairOptions } = this.state;
 
+    const fieldKeys = ['model', 'manufacturer', 'condition', 'storage', 'color', 'previousRepairs'];
     return (
       <div className="row">
         <div className="col-md-8">
@@ -183,14 +179,14 @@ class SellForm extends React.Component {
             <div className="row">
               <div className="col-md-6 mb-3">
                 <label htmlFor="model">Model*</label>
-                <Select options={modelOptions} />
+                <Select onChange={e => this.handleChange(fieldKeys[0], e)} options={modelOptions} />
                 <div className="invalid-feedback">
                   Valid model is required.
           </div>
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="manufacturer">Manufacturer*</label>
-                <Select options={manufacturerOption} />
+                <Select onChange={e => this.handleChange(fieldKeys[1], e)} options={manufacturerOption} />
                 <div className="invalid-feedback">
                   Valid Manufacturer is required.
           </div>
@@ -200,7 +196,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="condition">Condition*</label>
-                <Select options={conditionOptions} />
+                <Select onChange={e => this.handleChange(fieldKeys[2], e)} options={conditionOptions} />
                 <div className="invalid-feedback">
                   Please select a valid condition.
                 </div>
@@ -208,7 +204,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="storage">Internal Storage*</label>
-                <Select options={storageOptions} />
+                <Select  onChange={e => this.handleChange(fieldKeys[3], e)} options={storageOptions} />
                 <div className="invalid-feedback">
                   Please provide a valid internal storage.
           </div>
@@ -218,7 +214,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="color">Color</label>
-                <Select options={colorOptions} />
+                <Select onChange={e => this.handleChange(fieldKeys[4], e)} options={colorOptions} />
                 <div className="invalid-feedback">
                   Please select a valid color.
                    </div>
@@ -226,7 +222,7 @@ class SellForm extends React.Component {
 
               <div className="col-md-6 mb-3">
                 <label htmlFor="previousRepairs">Previous Repairs</label>
-                <Select isMulti options={repairOptions} />
+                <Select onChange={e => this.handleChange(fieldKeys[5], e) } isMulti  options={repairOptions} />
                 <div className="invalid-feedback">
                   Please select a valid condition.
                   </div>
