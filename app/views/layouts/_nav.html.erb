@@ -48,11 +48,10 @@
       <% if current_user %>
         <% if current_user.admin?%>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/products/new">Add New Product</a>
-              <a class="dropdown-item" href="/admin/import">Bulk Upload Products</a>
-              <a class="dropdown-item" href="#">Update Sell Values</a>  
+              <a class="dropdown-item" href="/products/new">Add Single Product</a>
+              <a class="dropdown-item" href="/admin/import">Add Multiple Products</a> 
           </li>
         <% else %>
           <li class="nav-item">
