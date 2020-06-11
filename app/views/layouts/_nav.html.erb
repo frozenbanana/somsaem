@@ -53,11 +53,11 @@
               <a class="dropdown-item" href="/products/new">Add Single Product</a>
               <a class="dropdown-item" href="/admin/import">Add Multiple Products</a> 
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Cart", cart_path(@cart), method: :get, :class => 'nav-link'%>
-          </li>
         <% end %>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Cart", cart_path(@cart), method: :get, :class => 'nav-link'%>
+        </li>
       <% end %>
       <% if current_user %>
         <li class="nav-item">
