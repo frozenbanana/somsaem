@@ -28,11 +28,6 @@ class SellDeviceForm extends React.Component {
         { value: 'galaxys10', label: 'Galaxy S10' },
         { value: 'galaxys20', label: 'Galaxy S20' },
       ],
-      manufacturer: null,
-      manufacturerOption: [
-        { value: 'apple', label: 'Apple' },
-        { value: 'samsung', label: 'Samsung' },
-      ],
       color: null,
       colorOptions: [
         { value: 'black', label: 'Black' },
@@ -47,14 +42,6 @@ class SellDeviceForm extends React.Component {
         { value: '64', label: '64 GB' },
         { value: '128', label: '128 GB' },
       ],
-      condition: null,
-      conditionOptions: [
-        { value: "1.0", label: 'Perfect' },
-        { value: "0.8", label: 'Good' },
-        { value: "0.6", label: 'Normal Usage' },
-        { value: "0.4", label: 'heavy Usage' },
-        { value: "0.2", label: 'Unusable' },
-      ],
       previousRepairs: [],
       repairOptions: [
         { value: 'screen', label: 'Screen' },
@@ -63,8 +50,26 @@ class SellDeviceForm extends React.Component {
         { value: 'charging port', label: 'Charging Port' },
         { value: 'other', label: 'Other' },
       ],
-      operatorLocked: false,
-      cloudLocked: false,
+      isServiceProviderLocked: {
+         key: "isServiceProviderLocked",value: false, label: 'Is the device locked to a service provider?'
+      },
+      isCloudLocked: {
+        key: "isCloudLocked",value: false, label: 'Is the device locked iCloud locked?'
+      },
+      hasBootupDefect: {
+        key: "hasBootupDefect",value: false, label: 'Has the device issues starting?'
+      },
+      hasScreenDefect: {
+        key: "hasScreenDefect", value: false, label: 'Has the device screen any defects?'
+      },
+      wearLevel: {
+        value: 0, label: 'Is the device subjected to dents or scratches?' 
+      },
+      wearLevelOptions: [ 
+        { value: 1, label: 'Barely notisable}'},
+        { value: 2, label: 'Notisable'}, 
+        { value: 3, label: 'Very Notiable'}, 
+      ],
       estimatedPrice: 0,
       // Form 2
       firstName: "",
@@ -81,9 +86,11 @@ class SellDeviceForm extends React.Component {
     };
   }
 
-  handleCheckboxChange = (event) => {
-    const key = event.target.id;
-    this.setState({ [key]: !this.state[key] }, () => this.calcPrice());
+  handleCheckboxChange = (key,checked) => {
+    console.log(key, checked);
+    let checkbox = this.state[key];
+    checkbox.value = checked;
+    this.setState({ [key]: checkbox }, () => this.calcPrice());
   }
 
   handleSelectionChange = (key, selectedOption) => {
@@ -108,7 +115,7 @@ class SellDeviceForm extends React.Component {
   }
 
   calcPrice = () => {
-    const { model, manufacturer, storage, condition, previousRepairs, operatorLocked, cloudLocked } = this.state;
+    const { model, storage, previousRepairs, isCloudLocked, isServiceProviderLocked } = this.state;
 
     if (model && manufacturer && storage && condition) {
       // TODO: Call api instead
@@ -120,26 +127,20 @@ class SellDeviceForm extends React.Component {
       const prevRepairFactor = 1 / (repairLen + 1);
       const storageFactor = parseInt(storage) / 64;
       let price = 0;
-      if (manufacturer.toLowerCase() < "apple") {
-        if (model.toLowerCase().includes("iphone")) {
-          price += 200;
-        } else if (model.toLowerCase().includes("ipad")) {
-          price += 250;
-        }
-      } else if (manufacturer.toLowerCase() < "samsung") {
-        if (model.toLowerCase().includes("s7") || model.toLowerCase().includes("s8")) {
-          price += 300;
-        } else if (model.toLowerCase().includes("s9") || model.toLowerCase().includes("s10")) {
-          price += 700;
-        }
+        price += 200;
+      if (model.toLowerCase().includes("ipad")) {
+        price += 250;
+      } else if (model.toLowerCase().includes("s7") || model.toLowerCase().includes("s8")) {
+        price += 300;
+      } else if (model.toLowerCase().includes("s9") || model.toLowerCase().includes("s10")) {
+        price += 700;
       }
       price += 1600 * storageFactor * conditionFactor * prevRepairFactor;
       price = Math.round(price - price % 25);
       price = operatorLocked || cloudLocked ? price * 0.25 : price;
       this.setState({ estimatedPrice: price });
-    } else {
+      } else {
       this.setState({ estimatedPrice: "More information please..." });
-
     }
   }
 
@@ -152,27 +153,37 @@ class SellDeviceForm extends React.Component {
 
   render() {
     const { modelOptions,
-      manufacturerOption,
       colorOptions,
       storageOptions,
-      conditionOptions,
       repairOptions,
+      isServiceProviderLocked,
+      isCloudLocked,
+      hasBootupDefect,
+      hasScreenDefect,
+      wearLevel,
+      wearLevelOptions,
       estimatedPrice,
       formStep,
       ledger } = this.state;
 
     const values = {
       modelOptions,
-      manufacturerOption,
       colorOptions,
       storageOptions,
-      conditionOptions,
       repairOptions,
+      wearLevel,
+      wearLevelOptions,
+      yesNoQuestions: [
+        isServiceProviderLocked,
+        isCloudLocked,
+        hasBootupDefect,
+        hasScreenDefect,
+        ],
       estimatedPrice,
       formStep,
     };
 
-    const fieldKeys = ['model', 'manufacturer', 'condition', 'storage', 'color', 'previousRepairs'];
+    const fieldKeys = ['model', 'storage', 'wearlevel', 'previousRepairs' ];
 
     switch (formStep) {
       case 1:
