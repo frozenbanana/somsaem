@@ -1,3 +1,4 @@
+<% if false %>
 <nav class="site-header sticky-top py-1">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
     <a class="py-2" href="/" aria-label="Product">
@@ -18,7 +19,67 @@
       <a class="py-2 d-none d-md-inline-block" href="/users/sign_up">Sign Up</a>
       <a class="py-2 d-none d-md-inline-block" href="/users/sign_in">Sign In</a>
     <% end %>
-    <%# <%= link_to "Log in", new_account_session_path, class: "py-2 d-none d-md-inline-block"%>
-    <%# <%= link_to "Sign up", new_account_registration_path, class: "py-2 d-none d-md-inline-block"%> 
+  </div>
+  </nav>
+<% end %>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Our Business</a>
+            <a class="dropdown-item" href="#">Contact</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/products">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Repair Device</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sell Device", sales_path, method: :get, :class => 'nav-link'%>
+      </li>
+    </ul>
+  </div>  
+  <div class="mx-auto order-0">
+    <a class="navbar-brand mx-auto" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+        <% if current_user.admin?%>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/admin">Add New Product</a>
+              <a class="dropdown-item" href="#">Bulk Upload Products</a>
+              <a class="dropdown-item" href="#">Update Sell Values</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Cart", cart_path(@cart), method: :get, :class => 'nav-link'%>
+          </li>
+        <% end %>
+      <% end %>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link'%>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_in">Sign In</a>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
