@@ -11,23 +11,28 @@
     </div>
   <% end %>
 
-  <%= label_tag(:name, "Name:") %><br />
-  <%= form.text_field :name %><br />
-  <%= label_tag(:description, "Description:") %><br />
-  <%= form.text_area :description %><br />
-  <%= label_tag(:quantity, "Quantity Available:") %><br />
-  <%= form.text_field :quantity %><br />
-  <%= label_tag(:manufacturer, "Manufacturer:") %><br />
-  <%= form.text_field :manufacturer %><br />
-  <%= label_tag(:quantity, "Model:") %><br />
-  <%= form.text_field :model %><br />
-  <%= label_tag(:price, "Price:") %><br />
-  <%= form.text_field :price %><br />
-  <%= label_tag(:productimage, "Product Image:") %><br />
-  <%= form.file_field :productimage %><br />
-
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="col">
+  <%= label_tag(:name, "Name") %>
+  <%= form.text_field :name, class: "form-control", placeholder: "Name" %><br />
+  <%= label_tag(:description, "Description") %>
+  <%= form.text_area :description, class: "form-control", placeholder: "Description" %><br />
+  <%= label_tag(:manufacturer, "Manufacturer") %>
+  <%= form.text_field :manufacturer, class: "form-control", placeholder: "Manufacturer" %><br />
+  <%= label_tag(:model, "Model") %>
+  <%= form.text_field :model, class: "form-control", placeholder: "Model" %><br />
   </div>
+  <div class="w-100"></div>
+  <div class="col">
+  <%= label_tag(:quantity, "Quantity Available") %>
+  <%= form.text_field :quantity, class: "form-control", placeholder: "Quantity Available" %><br />
+  <%= label_tag(:price, "Price") %>
+  <%= form.text_field :price, class: "form-control", placeholder: "Price" %><br />
+  <%= label_tag(:productimage, "Product Image") %>
+  <%= form.file_field :productimage, class: "form-control" %><br />
+  </div>
+  </div>
+
+
+    <%= form.submit class: "btn btn-primary" %>
 <% end %>

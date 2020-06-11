@@ -10,7 +10,8 @@
     <div class="col-md-6 product_content">
         <h4><%= @product.name %></h4>
         <p><%= @product.description %></p>
-        <h3 class="cost"><span class="glyphicon glyphicon-usd"><%= @product.price %></span><small class="pre-cost"><span class="glyphicon glyphicon-usd"></span> 60.00</small></h3>
+        <p><%= @product.quantity %> In Stock</p>
+        <h3 class="cost"><span class="glyphicon glyphicon-usd">$<%= '%.2f' % @product.price.to_i %></span><small class="pre-cost"><span class="glyphicon glyphicon-usd"></span></small></h3>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <select class="form-control" name="select">

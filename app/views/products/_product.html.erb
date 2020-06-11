@@ -11,14 +11,13 @@
             <p class="card-text"> <%= product.quantity %> In Stock </p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <%= button_to 'Add to cart', line_items_path(product_id: product.id), class: 'btn btn-sm btn-outline-secondary'%>
-                    <%= button_to "View More", product_path(product), method: :get, :class => 'btn btn-sm btn-outline-secondary'%>
-                    <%# figure out admin check to show edit button %>
-                    <% if false %>
-                    <%= button_to "Edit", edit_product_path(product), method: :get, :class => 'btn btn-sm btn-outline-secondary'%>
+                    <%= button_to 'Add to cart', line_items_path(product_id: product.id), class: 'btn btn-sm btn-outline-secondary mr-1'%>
+                    <%= button_to "View More", product_path(product), method: :get, :class => 'btn btn-sm btn-outline-secondary mr-1'%>
+                    <% if current_user && current_user.admin? %>
+                    <%= button_to "Edit", edit_product_path(product), method: :get, :class => 'btn btn-sm btn-primary mr-1'%>
                     <% end %>
                 </div>
-            <small class="text-muted"> $<%= product.price %> </small>
+            <small class="text-muted">$<%= '%.2f' % product.price.to_i %> </small>
             </div>
         </div>
     </div>
