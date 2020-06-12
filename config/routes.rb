@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :charges, only: [:new, :create]
   resources :line_items
   resources :carts, only: [:new, :create, :show]
   get 'search/index'
