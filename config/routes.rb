@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :search, only: [:index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'pages#index'
+  get '/charges/thanks', :to => 'charges#thanks', as: "success"
   get 'sales', to: 'sales#index'
 
   get '/admin/import', :to => 'admin#newimport'
