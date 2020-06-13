@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :charges, only: [:new, :create]
   resources :line_items
-
+  get '/products/estimate_price', :to => 'products#estimate_price'
   get 'search/index'
   devise_for :users
   resources :products

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_005251) do
+ActiveRecord::Schema.define(version: 2020_06_13_191302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,17 @@ ActiveRecord::Schema.define(version: 2020_06_09_005251) do
     t.index ["unlock_token"], name: "index_fae_users_on_unlock_token", unique: true
   end
 
+  create_table "global_price_adjusters", force: :cascade do |t|
+    t.float "serviceProviderLockedFactor"
+    t.float "wearLevelFactor"
+    t.float "cloudLockedFactor"
+    t.float "screenDefectFactor"
+    t.float "bootupDefectFactor"
+    t.float "previousRepairFactor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
@@ -290,6 +301,9 @@ ActiveRecord::Schema.define(version: 2020_06_09_005251) do
     t.float "price"
     t.string "manufacturer"
     t.string "model"
+    t.boolean "isRepairable", default: false
+    t.float "basePrice"
+    t.string "storage"
   end
 
   create_table "repairables", force: :cascade do |t|

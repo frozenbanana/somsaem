@@ -13,6 +13,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  # POST /products/estimate_price
+  # POST /products.json
+  def estimate_price
+    # binding.pry
+    product = Product.find_by(model: price_estimate_params[:model])
+   # binding.pry
+    # product.calc_price(params)
+    render json: product  
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -78,4 +88,11 @@ class ProductsController < ApplicationController
       # params.fetch(:product, {})
       params.require(:product).permit(:name, :description, :manufacturer, :model, :quantity, :price, :productimage)
     end
+
+     # Only allow a list of trusted parameters through.
+     def price_estimate_params
+      # params.fetch(:product, {})
+      params.permit(:model, :storage, :serviceProviderLockedFactor, :wearLevelFactor, :cloudLockedFactor, :bootupDefectFactor, :previousRepairFactor)
+    end
+
 end
