@@ -56,7 +56,7 @@
         <% end %>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Cart", cart_path(@cart), method: :get, :class => 'nav-link'%>
+          <%= link_to "Cart", cart_path, method: :get, :class => 'nav-link'%>
         </li>
       <% end %>
       <% if current_user %>

@@ -20,7 +20,10 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'usd'
     )
-
+  @cart.line_items.each do |item|
+    item.product.quantity-=1
+    item.product.save
+  end
   @cart.line_items.clear
 
   redirect_to success_path
