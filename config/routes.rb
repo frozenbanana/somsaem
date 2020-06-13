@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :charges, only: [:new, :create]
   resources :line_items
-  resources :carts, only: [:new, :create, :show]
+
   get 'search/index'
   devise_for :users
   resources :products
@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   get '/admin/import', :to => 'admin#newimport'
   post '/admin/import', :to => 'admin#createimport'
   resources :admin
+
+  get 'cart', to: 'carts#show'
+
+
 
 end
