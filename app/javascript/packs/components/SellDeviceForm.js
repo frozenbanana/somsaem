@@ -141,7 +141,7 @@ class SellDeviceForm extends React.Component {
             country: {
                 key: "country",
                 value: "",
-                label: "Has the device screen any defects?",
+                label: "Country",
             },
             clearingNumber: {
                 key: "clearingNumber",
