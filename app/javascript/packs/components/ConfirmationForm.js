@@ -3,7 +3,7 @@ import FormLedger from "./FormLedger";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import SelectorGroup from "./SelectorGroup";
 
-export class DeviceDetailsForm extends React.Component {
+export class PersonalDetailsForm extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,22 +15,25 @@ export class DeviceDetailsForm extends React.Component {
 
     render() {
         const { values } = this.props;
-        const { handleChange, nextStep } = this.props;
+        const { handleChange, prevStep, nextStep } = this.props;
         const { ledger, styleStep } = this.props;
+        console.log("knick", values);
+        const isAcceptTerm = values.yesNoQuestions[0].value;
+        const isDevReset = values.yesNoQuestions[1].value;
         return (
             <div className="row">
                 <div className="col-md-8">
-                    <h4 className="mb-3">Estimate Price</h4>
+                    <h4 className="mb-3">Confirmation</h4>
                     <form
                         className="needs-validation"
                         noValidate=""
                         onSubmit={nextStep}
                     >
-                        {console.log("he", values)}
-                        <SelectorGroup
-                            fieldRows={values.fieldRows}
-                            handleChange={handleChange}
-                        />
+                        <div className="row">
+                            <div className="col-md-8 mb-3">
+                                <p>{values.termsOfService}</p>
+                            </div>
+                        </div>
 
                         <hr className="mb-4" />
 
@@ -55,19 +58,27 @@ export class DeviceDetailsForm extends React.Component {
                                 </div>
                             );
                         })}
-
-                        <hr className="mb-4" />
-                        <h5 className="mb-3">
-                            Your estimated price: {values.estimatedPrice} SEK{" "}
-                        </h5>
                         <div className="row">
-                            <button
-                                className="btn btn-primary btn-lg btn-block"
-                                type="button"
-                                onClick={nextStep}
-                            >
-                                Next
-                            </button>
+                            <div className="col-md-6 mb-3">
+                                <button
+                                    className="btn btn-secondary btn-lg btn-block"
+                                    type="button"
+                                    onClick={prevStep}
+                                >
+                                    Back
+                                </button>
+                            </div>
+                            <div className="col-md-6 mb-3">
+				{console.log('bools: ',!isDevReset && !isAcceptTerm, !isDevReset, !isAcceptTerm)}
+                                <button
+                                    className="btn btn-success btn-lg btn-block"
+                                    type="button"
+                                    onClick={nextStep}
+                                    disabled={!(isDevReset && isAcceptTerm)}
+                                >
+                                    Confirm
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -81,4 +92,4 @@ export class DeviceDetailsForm extends React.Component {
     }
 }
 
-export default DeviceDetailsForm;
+export default PersonalDetailsForm;

@@ -1,5 +1,7 @@
 import React from "react";
 import DeviceDetailsForm from "./DeviceDetailsForm";
+import PersonalDetailsForm from "./PersonalDetailsForm";
+import ConfirmationForm from "./ConfirmationForm";
 
 class SellDeviceForm extends React.Component {
     constructor(props) {
@@ -8,6 +10,7 @@ class SellDeviceForm extends React.Component {
             loading: false,
             // Form 1
             model: {
+                key: "model",
                 value: null,
                 label: "Model",
                 options: [
@@ -32,6 +35,7 @@ class SellDeviceForm extends React.Component {
                 ],
             },
             color: {
+                key: "color",
                 value: null,
                 label: "Color",
                 options: [
@@ -41,6 +45,7 @@ class SellDeviceForm extends React.Component {
                 ],
             },
             storage: {
+                key: "storage",
                 value: null,
                 label: "Internal Storage",
                 options: [
@@ -52,6 +57,8 @@ class SellDeviceForm extends React.Component {
                 ],
             },
             previousRepairs: {
+                isMulti: true,
+                key: "previousRepairs",
                 value: [],
                 label: "Previous Repairs",
                 options: [
@@ -63,6 +70,7 @@ class SellDeviceForm extends React.Component {
                 ],
             },
             wearLevel: {
+                key: "wearLevel",
                 value: 0,
                 label: "How many scratches or dents are visable?",
                 options: [
@@ -95,20 +103,69 @@ class SellDeviceForm extends React.Component {
 
             estimatedPrice: 0,
             // Form 2
-            firstName: "",
-            lastName: "",
-            email: "",
-            phoneNumber: "",
-            adress: "",
-            city: "",
-            region: "",
-            country: "",
-            country: "",
-            clearingNumber: "",
-            accountNumber: "",
+            firstName: {
+                key: "firstName",
+                value: "",
+                label: "First name",
+            },
+            lastName: {
+                key: "lastName",
+                value: "",
+                label: "Last name",
+            },
+            email: {
+                key: "email",
+                value: "",
+                label: "E-mail",
+            },
+            phoneNumber: {
+                key: "phoneNumber",
+                value: "",
+                label: "Phone Number",
+            },
+            adress: {
+                key: "adress",
+                value: "",
+                label: "Address",
+            },
+            city: {
+                key: "city",
+                value: "",
+                label: "City",
+            },
+            region: {
+                key: "region",
+                value: "",
+                label: "Region",
+            },
+            country: {
+                key: "country",
+                value: "",
+                label: "Country",
+            },
+            clearingNumber: {
+                key: "clearingNumber",
+                value: "",
+                label: "Clearing number",
+            },
+            accountNumber: {
+                key: "accountNumber",
+                value: "",
+                label: "Account number",
+            },
             // Form 3
-            isResetted: false,
-            isAcceptedTerms: false,
+            termsOfService:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            isDeviceResetted: {
+                key: "isDeviceResetted",
+                value: false,
+                label: "I have ensured my device is factory resetted.",
+            },
+            isAcceptedTerms: {
+                key: "isAcceptedTerms",
+                value: false,
+                label: "I accept the terms of service.",
+            },
             ledger: [
                 {
                     title: "1. Estimate Price",
@@ -132,28 +189,20 @@ class SellDeviceForm extends React.Component {
         };
     }
 
-    handleCheckboxChange = (key, checked) => {
-        console.log(key, checked);
-        let checkbox = this.state[key];
-        checkbox.value = checked;
-        this.setState({ [key]: checkbox }, () => this.calcPrice());
-    };
-
-    handleSelectionChange = (key, selectedOption) => {
-        console.log(key, selectedOption);
-        if (Array.isArray(selectedOption)) {
-            this.setState({ [key]: selectedOption.map((el) => el.value) }, () =>
-                this.calcPrice()
+    handleChange = (key, selectedOption) => {
+        console.log("hello", key, selectedOption);
+        if (typeof selectedOption === "boolean") {
+            console.log("selectedOption.value :", selectedOption.value);
+            this.setState(
+                { [key]: { ...this.state[key], value: selectedOption } },
+                () => this.calcPrice()
             );
         } else if (selectedOption) {
             console.log("selectedOption.value :", selectedOption.value);
-
             this.setState(
                 { [key]: { ...this.state[key], value: selectedOption.value } },
                 () => this.calcPrice()
             );
-        } else {
-            this.setState({ [key]: null }, () => () => this.calcPrice());
         }
     };
 
@@ -169,7 +218,7 @@ class SellDeviceForm extends React.Component {
 
     calcPrice = () => {
         const { model, storage, previousRepairs, isCloudLocked } = this.state;
-        console.log("that the sheiet", model);
+        console.log("that the sheiet", this.state);
         const params = {
             model: model.value,
         };
@@ -198,33 +247,6 @@ class SellDeviceForm extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
-        // if (model && storage) {
-        //     // TODO: Call api instead
-        //     let repairLen = 0;
-        //     if (previousRepairs.value.length) {
-        //         repairLen = previousRepairs.value.length;
-        //     }
-        //     const prevRepairFactor = 1 / (repairLen + 1);
-        //     const storageFactor = parseInt(storage) / 64;
-        //     let price = 0;
-        //     price += 200;
-        //     if (model.toLowerCase().includes("ipad")) {
-        //         price += 250;
-        //     } else if (
-        //         model.toLowerCase().includes("s7") ||
-        //         model.toLowerCase().includes("s8")
-        //     ) {
-        //         price += 300;
-        //     } else if (
-        //         model.toLowerCase().includes("s9") ||
-        //         model.toLowerCase().includes("s10")
-        //     ) {
-        //         price += 700;
-        //     }
-        //     price += 1600 * storageFactor * prevRepairFactor;
-        //     price = Math.round(price - (price % 25));
-        //     price =
-        //         operatorLocked || isCloudLocked.value ? price * 0.25 : price;
     };
 
     styleStep = (currStepNr, stepNr) => {
@@ -237,6 +259,7 @@ class SellDeviceForm extends React.Component {
 
     render() {
         const {
+            // Form1
             model,
             storage,
             wearLevel,
@@ -246,12 +269,28 @@ class SellDeviceForm extends React.Component {
             hasBootupDefect,
             hasScreenDefect,
             estimatedPrice,
+            // Form2
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            adress,
+            city,
+            region,
+            country,
+            clearingNumber,
+            accountNumber,
+            // Form 3
+            termsOfService,
+            isDeviceResetted,
+            isAcceptedTerms,
+
             formStep,
             ledger,
         } = this.state;
 
-        const values = {
-            rows: [
+        const valuesForm1 = {
+            fieldRows: [
                 { left: model, right: storage },
                 { left: wearLevel, right: previousRepairs },
             ],
@@ -265,25 +304,56 @@ class SellDeviceForm extends React.Component {
             formStep,
         };
 
-        const fieldKeys = ["model", "storage", "wearlevel", "previousRepairs"];
+        const valuesForm2 = {
+            fieldRows: [
+                { left: firstName, right: lastName },
+                { left: email, right: phoneNumber },
+                { left: adress, right: city },
+                { left: region, right: country },
+                { left: clearingNumber, right: accountNumber },
+            ],
+            formStep,
+        };
+
+        const valuesForm3 = {
+            termsOfService,
+            yesNoQuestions: [isAcceptedTerms, isDeviceResetted],
+            formStep,
+        };
 
         switch (formStep) {
             case 1:
                 return (
                     <DeviceDetailsForm
                         nextStep={this.nextStep}
-                        handleSelectionChange={this.handleSelectionChange}
-                        handleCheckboxChange={this.handleCheckboxChange}
+                        handleChange={this.handleChange}
                         styleStep={this.styleStep}
                         ledger={ledger}
-                        values={values}
-                        fieldKeys={fieldKeys}
+                        values={valuesForm1}
                     />
                 );
             case 2:
-                return "Form 2";
+                return (
+                    <PersonalDetailsForm
+                        prevStep={this.prevStep}
+                        nextStep={this.nextStep}
+                        handleChange={this.handleChange}
+                        styleStep={this.styleStep}
+                        ledger={ledger}
+                        values={valuesForm2}
+                    />
+                );
             case 3:
-                return "Form 3";
+                return (
+                    <ConfirmationForm
+                        prevStep={this.prevStep}
+                        nextStep={this.nextStep}
+                        handleChange={this.handleChange}
+                        styleStep={this.styleStep}
+                        ledger={ledger}
+                        values={valuesForm3}
+                    />
+                );
         }
     }
 }
