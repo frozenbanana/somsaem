@@ -20,13 +20,18 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'usd'
     )
+  @order = Order.create(email: params[:stripeEmail], total: @amount)
   @cart.line_items.each do |item|
     item.product.quantity-=1
+    OrderItem.create(order_id: @order.id, product_id: item.product.id)
     item.product.save
   end
-  @cart.line_items.clear
 
-  redirect_to success_path
+
+
+  @cart.destroy
+
+  redirect_to order_path(@order)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
