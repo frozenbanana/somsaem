@@ -1,7 +1,7 @@
 import React from "react";
-import Select from "react-select";
 import FormLedger from "./FormLedger";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
+import SelectorGroup from "./SelectorGroup";
 
 export class DeviceDetailsForm extends React.Component {
     constructor(props) {
@@ -14,12 +14,8 @@ export class DeviceDetailsForm extends React.Component {
     };
 
     render() {
-        const { fieldKeys, values } = this.props;
-        const {
-            handleCheckboxChange,
-            handleSelectionChange,
-            nextStep,
-        } = this.props;
+        const { values } = this.props;
+        const { handleChange, nextStep } = this.props;
         const { ledger, styleStep } = this.props;
         return (
             <div className="row">
@@ -30,43 +26,11 @@ export class DeviceDetailsForm extends React.Component {
                         noValidate=""
                         onSubmit={nextStep}
                     >
-                        {values.rows.map((fieldRow, i) => {
-                            return (
-                                <div className="row">
-                                    <div className="col-md-6 mb-3">
-                                        <label htmlFor={fieldKeys[2 * i]}>
-                                            {fieldRow.left.label}
-                                        </label>
-                                        <Select
-                                            key={fieldKeys[2 * i]}
-                                            autoFocus
-                                            onChange={(e) =>
-                                                handleSelectionChange(
-                                                    fieldKeys[2 * i],
-                                                    e
-                                                )
-                                            }
-                                            options={fieldRow.left.options}
-                                        />
-                                    </div>
-                                    <div className="col-md-6 mb-3">
-                                        <label htmlFor={fieldKeys[2 * i + 1]}>
-                                            {fieldRow.right.label}
-                                        </label>
-                                        <Select
-                                            key={fieldKeys[2 * i + 1]}
-                                            onChange={(e) =>
-                                                handleSelectionChange(
-                                                    fieldKeys[2 * i + 1],
-                                                    e
-                                                )
-                                            }
-                                            options={fieldRow.right.options}
-                                        />
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        {console.log("he", values)}
+                        <SelectorGroup
+                            fieldRows={values.fieldRows}
+                            handleChange={handleChange}
+                        />
 
                         <hr className="mb-4" />
 
@@ -83,12 +47,9 @@ export class DeviceDetailsForm extends React.Component {
                                             onlabel="Yes"
                                             offlabel="No"
                                             onChange={(checked) =>
-                                                handleCheckboxChange(
-                                                    q.key,
-                                                    checked
-                                                )
+                                                handleChange(q.key, checked)
                                             }
-                                            id={q.key}
+                                            key={q.key}
                                         />
                                     </div>
                                 </div>
@@ -99,13 +60,15 @@ export class DeviceDetailsForm extends React.Component {
                         <h5 className="mb-3">
                             Your estimated price: {values.estimatedPrice} SEK{" "}
                         </h5>
-                        <button
-                            className="btn btn-primary btn-lg btn-block"
-                            type="button"
-                            onClick={nextStep}
-                        >
-                            Next
-                        </button>
+                        <div className="row">
+                            <button
+                                className="btn btn-primary btn-lg btn-block"
+                                type="button"
+                                onClick={nextStep}
+                            >
+                                Next
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <FormLedger
