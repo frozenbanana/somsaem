@@ -7,7 +7,6 @@ class ChargesController < ApplicationController
   def create
     @amount = Integer(params[:amount].to_f * 100)
     @amount.to_i
-
   
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
@@ -20,10 +19,11 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'usd'
     )
+  @amount/=100
   @order = Order.create(email: params[:stripeEmail], total: @amount)
   @cart.line_items.each do |item|
     item.product.quantity-=1
-    OrderItem.create(order_id: @order.id, product_id: item.product.id)
+    OrderItem.create(order_id: @order.id, product_id: item.product.id, price: item.product.price)
     item.product.save
   end
 
