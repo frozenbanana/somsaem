@@ -14,14 +14,14 @@ class SellDeviceForm extends React.Component {
                 value: null,
                 label: "Model",
                 options: [
-                    { value: "iphone5", label: "iPhone 6" },
-                    { value: "iphone5s", label: "iPhone 5s" },
-                    { value: "iphone6", label: "iPhone 6" },
-                    { value: "iphone6s", label: "iPhone 6s" },
-                    { value: "iphone6splus", label: "iPhone 6+s" },
-                    { value: "iphone7", label: "iPhone 7" },
-                    { value: "iphone7plus", label: "iPhone 7+" },
-                    { value: "iphone8", label: "iPhone 8" },
+                    { value: "iphone 5", label: "iPhone 5" },
+                    { value: "iphone 5s", label: "iPhone 5s" },
+                    { value: "iphone 6", label: "iPhone 6" },
+                    { value: "iphone 6s", label: "iPhone 6s" },
+                    { value: "iphone 6splus", label: "iPhone 6+s" },
+                    { value: "iPhone 7", label: "iPhone 7" },
+                    { value: "iphone 7plus", label: "iPhone 7+" },
+                    { value: "iPhone 8", label: "iPhone 8" },
                     { value: "iphone8plus", label: "iPhone 8+" },
                     { value: "iphonex", label: "iPhone X" },
                     { value: "iphonexr", label: "iPhone XR" },
@@ -217,10 +217,25 @@ class SellDeviceForm extends React.Component {
     };
 
     calcPrice = () => {
-        const { model, storage, previousRepairs, isCloudLocked } = this.state;
+        const {
+            model,
+            isServiceProviderLocked,
+            wearLevel,
+            isCloudLocked,
+            hasBootupDefect,
+            previousRepairs,
+            storage,
+        } = this.state;
+
         console.log("that the sheiet", this.state);
+
         const params = {
             model: model.value,
+            serviceProviderLocked: isServiceProviderLocked.value,
+            wearLevel: wearLevel.value,
+            cloudLocked: isCloudLocked.value,
+            bootupDefect: hasBootupDefect.value,
+            previousRepairs: previousRepairs.value,
         };
 
         let query = Object.keys(params)

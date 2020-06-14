@@ -13,12 +13,29 @@ class ProductsController < ApplicationController
     end
   end
 
-  # POST /products/estimate_price
-  # POST /products.json
+  # GET /products/estimate_price
+  # GET /products.json
   def estimate_price
     # binding.pry
     product = Product.find_by(model: price_estimate_params[:model])
-   # binding.pry
+    settings = AppSetting.first
+    price  = product.basePrice
+    if price_estimate_params[:serviceProviderLocked].present?
+      price *= setting[:serviceProviderLockedFactor] * price_estimate_params[:serviceProviderLocked] 
+    end
+    if price_estimate_params[:wearLevel].present?
+      price *= setting[:wearLevelFactor] * price_estimate_params[:wearLevel] 
+    end
+    if price_estimate_params[:cloudLocked].present?
+      price *= setting[:cloudLockedFactor] * price_estimate_params[:cloudLocked] 
+    end
+    if price_estimate_params[:bootupDefect].present?
+      price *= setting[:bootupDefectFactor] * price_estimate_params[:bootupDefect] 
+    end
+    if price_estimate_params[:previousRepairs].present?
+      price *= setting[:previousRepairFactor] * price_estimate_params[:previousRepairs] 
+    end
+   binding.pry
     # product.calc_price(params)
     render json: product  
   end
@@ -92,7 +109,7 @@ class ProductsController < ApplicationController
      # Only allow a list of trusted parameters through.
      def price_estimate_params
       # params.fetch(:product, {})
-      params.permit(:model, :storage, :serviceProviderLockedFactor, :wearLevelFactor, :cloudLockedFactor, :bootupDefectFactor, :previousRepairFactor)
+      params.permit(:model, :storage, :serviceProviderLocked, :wearLevel, :cloudLocked, :bootupDefect, :previousRepairs)
     end
 
 end
