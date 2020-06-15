@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_013145) do
+ActiveRecord::Schema.define(version: 2020_06_15_021149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,9 +281,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_013145) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 1
-    t.bigint "order_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
-    t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
@@ -325,6 +323,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_013145) do
     t.boolean "isRepairable", default: false
     t.float "basePrice"
     t.string "storage"
+    t.index ["model"], name: "index_products_on_model", unique: true
   end
 
   create_table "repairables", force: :cascade do |t|
@@ -352,7 +351,6 @@ ActiveRecord::Schema.define(version: 2020_06_14_013145) do
   add_foreign_key "articles", "article_categories"
   add_foreign_key "devices", "device_types"
   add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"

@@ -2,6 +2,10 @@ require 'csv'
 class Product < ApplicationRecord
     has_one_attached :productimage
     has_many :line_items
+    has_many :order_items
+
+    validates :name, :manufacturer, :model, :description, :quantity, :price, :isRepairable, :basePrice, presence: true
+    validates :model, uniqueness: true
 
     include PgSearch::Model
     pg_search_scope :search, against: [:name, :model, :manufacturer]

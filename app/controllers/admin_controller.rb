@@ -11,7 +11,7 @@ class AdminController < ApplicationController
     def createimport
         Product.import(params[:file])
         respond_to do |format|
-            format.html { redirect_to admin_index_path, notice: 'Products imported successfully.' }
+            format.html { redirect_to products_path, notice: 'Products imported successfully.' }
         end
     end
 
