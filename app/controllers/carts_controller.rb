@@ -9,9 +9,7 @@ class CartsController < ApplicationController
         @products.push(Product.find(item.product_id))
       end
       @total_price = @cart.total_price
-      respond_to do |format|
-        format.html { render :show }
-      end
+      render :show
     else
       redirect_to root_path
     end

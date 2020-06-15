@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :admin
 
   get 'cart', to: 'carts#show'
-
-
+  
+  resources :orders, only: [:show]
 
 end

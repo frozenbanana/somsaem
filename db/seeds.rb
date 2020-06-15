@@ -6,23 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Product.create(name: 'Balls', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
-Product.create(name: 'Stuff', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
-Product.create(name: 'You know', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
-Product.create(name: 'This one', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
-Product.create(name: 'Good', description: 'Tastes great!', quantity: 69, price: 4.20, manufacturer: "Deez", model: "Nutz")
-
-
+Product.create(name: 'Samsung Galaxy Note 9', description: 'The best the Note line has seen yet.', quantity: 5, price: 1000, manufacturer: "samsung", model: "galaxynote9", isRepairable: true, basePrice: 500)
+Product.create(name: 'Samsung Galaxy Note 10', description: 'The best the Note line has seen yet.', quantity: 5, price: 1100, manufacturer: "samsung", model: "galaxynote10", isRepairable: true, basePrice: 550)
+Product.create(name: 'Samsung Galaxy Note 20', description: 'The best the Note line has seen yet.', quantity: 5, price: 1200, manufacturer: "samsung", model: "galaxynote20", isRepairable: true, basePrice: 600)
 Product.create(name: 'iPhone 7', description: 'It is a phone', quantity: 1, price: 2400, manufacturer: "Apple", model: "iPhone 7", isRepairable: true, basePrice: 900)
 Product.create(name: 'iPhone 8', description: 'It is a phone', quantity: 1, price: 2600, manufacturer: "Apple", model: "iPhone 8", isRepairable: true, basePrice: 1000)
 Product.create(name: 'iPhone X', description: 'It is a phone', quantity: 1, price: 2700, manufacturer: "Apple", model: "iPhone X", isRepairable: true, basePrice: 1100)
 Product.create(name: 'Galaxy S7', description: 'It is a phone', quantity: 1, price: 2100, manufacturer: "Apple", model: "Galaxy S7", isRepairable: true, basePrice: 900)
 Product.create(name: 'Galaxy S8', description: 'It is a phone', quantity: 1, price: 2660, manufacturer: "Apple", model: "Galaxy S8", isRepairable: true, basePrice: 1100)
-
-# Repairable.create(model: 'Iphone 6s', manufacturer: 'Apple', model_year: 2016);
-# Repairable.create(model: 'Iphone 7', manufacturer: 'Apple', model_year: 2017);
-# Repairable.create(model: 'Iphone 7+', manufacturer: 'Apple', model_year: 2017);
-# Repairable.create(model: 'Iphone 8', manufacturer: 'Apple', model_year: 2018);
-# Repairable.create(model: 'Galaxy S7', manufacturer: 'Samsung', model_year: 2017);
-# Repairable.create(model: 'Galaxy S8', manufacturer: 'Samsung', model_year: 2018);
-# Repairable.create(model: 'Galaxy S9', manufacturer: 'Samsung', model_year: 2018);
