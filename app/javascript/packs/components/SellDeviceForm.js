@@ -190,15 +190,19 @@ class SellDeviceForm extends React.Component {
     }
 
     handleChange = (key, selectedOption) => {
-        console.log("hello", key, selectedOption);
         if (typeof selectedOption === "boolean") {
             console.log("selectedOption.value :", selectedOption.value);
             this.setState(
                 { [key]: { ...this.state[key], value: selectedOption } },
                 () => this.calcPrice()
             );
+        } else if (Array.isArray(selectedOption)) {
+            const newValues = selectedOption.map((el) => el.value);
+            this.setState(
+                { [key]: { ...this.state[key], value: newValues } },
+                () => this.calcPrice()
+            );
         } else if (selectedOption) {
-            console.log("selectedOption.value :", selectedOption.value);
             this.setState(
                 { [key]: { ...this.state[key], value: selectedOption.value } },
                 () => this.calcPrice()
@@ -224,10 +228,9 @@ class SellDeviceForm extends React.Component {
             isCloudLocked,
             hasBootupDefect,
             previousRepairs,
+            hasScreenDefect,
             storage,
         } = this.state;
-
-        console.log("that the sheiet", this.state);
 
         const params = {
             model: model.value,
@@ -235,7 +238,8 @@ class SellDeviceForm extends React.Component {
             wearLevel: wearLevel.value,
             cloudLocked: isCloudLocked.value,
             bootupDefect: hasBootupDefect.value,
-            previousRepairs: previousRepairs.value,
+            screenDefect: hasScreenDefect.value,
+            previousRepairs: previousRepairs.value.length,
         };
 
         let query = Object.keys(params)
@@ -253,9 +257,9 @@ class SellDeviceForm extends React.Component {
                 console.log("response: ", resp);
 
                 if (resp.ok) {
-                    resp.json().then((json) => {
-                        console.log("json", json);
-                        this.setState({ estimatedPrice: json.basePrice });
+                    resp.json().then((result) => {
+                        console.log("json", result);
+                        this.setState({ estimatedPrice: result });
                     });
                 }
             })
