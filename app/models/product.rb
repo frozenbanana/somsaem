@@ -2,6 +2,10 @@ require 'csv'
 class Product < ApplicationRecord
     has_one_attached :productimage
     has_many :line_items
+    has_many :order_items
+
+    validates :name, :manufacturer, :model, :description, :quantity, :price, :isRepairable, :basePrice, presence: true
+    validates :model, uniqueness: true
 
     include PgSearch::Model
     pg_search_scope :search, against: [:name, :model, :manufacturer]
@@ -11,14 +15,18 @@ class Product < ApplicationRecord
 
     def self.import(file)
       CSV.foreach(file.path, headers:true) do |row|
-        product = Product.new
-        product.name = row[0]
-        product.manufacturer = row[1]
-        product.model = row[2]
-        product.description = row[3]
-        product.quantity = row[4]
-        product.price = row[5]
-        product.save
+        if !Product.find_by(model: row[2])
+          product = Product.new
+          product.name = row[0]
+          product.manufacturer = row[1]
+          product.model = row[2]
+          product.description = row[3]
+          product.quantity = row[4]
+          product.price = row[5]
+          product.isRepairable = row[6]
+          product.basePrice = row[7]
+          product.save
+        end
       end
     end
 

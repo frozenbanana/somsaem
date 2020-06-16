@@ -7,7 +7,6 @@ class ChargesController < ApplicationController
   def create
     @amount = Integer(params[:amount].to_f * 100)
     @amount.to_i
-
   
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
@@ -17,25 +16,23 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       customer: customer.id,
       amount: @amount,
-      description: 'Rails Stripe customer',
+      description: 'Somsaem Stripe customer',
       currency: 'usd'
     )
-  @cart.line_items.each do |item|
-    item.product.quantity-=1
-    item.product.save
+    @amount/=100
+    @order = Order.create(email: params[:stripeEmail], total: @amount)
+    @cart.line_items.each do |item|
+      item.product.quantity-=1
+      OrderItem.create(order_id: @order.id, product_id: item.product.id, price: item.product.price)
+      item.product.save
+    end
+
+    @cart.destroy
+
+    redirect_to order_path(@order)
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
   end
-  @cart.line_items.clear
-
-  redirect_to success_path
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-  end
-
-  def thanks
-    render :thanks
-  end
-
-
 end

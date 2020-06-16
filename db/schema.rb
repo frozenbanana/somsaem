@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_173049) do
+ActiveRecord::Schema.define(version: 2020_06_15_021149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2020_06_13_173049) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
   create_table "app_settings", force: :cascade do |t|
     t.float "serviceProviderLockedFactor", default: 0.2
     t.float "wearLevelFactor", default: 0.1
@@ -44,6 +56,25 @@ ActiveRecord::Schema.define(version: 2020_06_13_173049) do
     t.float "bootupDefectFactor", default: 0.3
     t.float "previousRepairFactor", default: 0.1
     t.integer "singleton_guard"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["singleton_guard"], name: "index_app_settings_on_singleton_guard", unique: true
+  end
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.text "introduction"
+    t.text "body"
+    t.date "date"
+    t.bigint "article_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -61,6 +92,23 @@ ActiveRecord::Schema.define(version: 2020_06_13_173049) do
     t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "price"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "email"
+    t.float "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -84,6 +132,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_173049) do
     t.boolean "isRepairable", default: false
     t.float "basePrice"
     t.string "storage"
+    t.index ["model"], name: "index_products_on_model", unique: true
   end
 
   create_table "repairables", force: :cascade do |t|
@@ -110,4 +159,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_173049) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
 end
