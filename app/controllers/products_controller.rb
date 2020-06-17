@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
     else
       @products = Product.search(params[:search])
     end
+    # format.json { render json: @products, status: :ok}
+    render json: @products, status: :ok
   end
 
   # GET /products/estimate_price
