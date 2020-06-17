@@ -5,9 +5,9 @@ class RepairablesController < ApplicationController
   # GET /repairables.json
   def index
     if not params[:search].present?
-      @repairables = Repairable.all
+      @repairables = Product.all.where(:isRepairable => true)
     else
-      @repairables = Repairable.search(params[:search])
+      @repairables = Product.where(:isRepairable => true).search(params[:search])
     end
 
   end
