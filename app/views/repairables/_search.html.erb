@@ -39,8 +39,7 @@
           <tr>
             <td><%= repairable.model %></td>
             <td><%= repairable.manufacturer %></td>
-            <td><%= repairable.model_year %></td>
-            <td><%= link_to 'View', repairable_path(repairable.id) %></td>
+            <td><%= link_to 'View', product_path(repairable.id) %></td>
           </tr>
         <% end %>
       <tbody>
