@@ -10,12 +10,40 @@ class ProductsController < ApplicationController
     end
   end
 
+  # GET /products/estimate_price
+  # GET /products.json
   def estimate_price
-    # binding.pry
     product = Product.find_by(model: price_estimate_params[:model])
-    # binding.pry
-    # product.calc_price(params)
-    render json: product  
+    setting = AppSetting.first_or_create
+
+    if product.basePrice.present?
+      price  = product.basePrice
+    else
+      price = -1
+    end
+    
+    if price_estimate_params[:previousRepairs].present?
+      price -= price * setting[:previousRepairFactor] * Float(price_estimate_params[:previousRepairs])
+    end
+    if price_estimate_params[:wearLevel].present?
+      price -= price * setting[:wearLevelFactor] * Float(price_estimate_params[:wearLevel])
+    end
+    if price_estimate_params[:serviceProviderLocked] == "true"
+      price *= setting[:serviceProviderLockedFactor]
+    end
+    if price_estimate_params[:cloudLocked] == "true"
+      price *= setting[:cloudLockedFactor]
+    end
+    if price_estimate_params[:bootupDefect] == "true"
+      price *= setting[:bootupDefectFactor]
+    end
+    if price_estimate_params[:screenDefect] == "true"
+      price *= setting[:screenDefectFactor]
+    end
+
+    #binding.pry
+    price = price - price % 25 # Around to closest 25
+    render json: price
   end
 
   def show
@@ -72,6 +100,7 @@ class ProductsController < ApplicationController
     end
 
      def price_estimate_params
-      params.permit(:model, :storage, :serviceProviderLockedFactor, :wearLevelFactor, :cloudLockedFactor, :bootupDefectFactor, :previousRepairFactor)
+      # params.fetch(:product, {})
+      params.permit(:model, :storage, :serviceProviderLocked, :wearLevel, :cloudLocked, :bootupDefect, :screenDefect, :previousRepairs)
     end
 end

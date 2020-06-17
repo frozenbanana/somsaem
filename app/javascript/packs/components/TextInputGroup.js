@@ -12,8 +12,9 @@ const TextInputGroup = ({ fieldRows, handleChange }) => {
                                 {fieldRow.left.label}
                             </label>
                             <input
+                                key={fieldRow.left.key}
                                 type="text"
-				class="form-control"
+                                className="form-control"
                                 key={fieldRow.left.key}
                                 onChange={(e) =>
                                     handleChange(fieldRow.left.key, e)
@@ -25,8 +26,9 @@ const TextInputGroup = ({ fieldRows, handleChange }) => {
                                 {fieldRow.right.label}
                             </label>
                             <input
+                                key={fieldRow.right.key}
                                 type="text"
-				class="form-control"
+                                className="form-control"
                                 key={fieldRow.right.key}
                                 onChange={(e) =>
                                     handleChange(fieldRow.right.key, e)

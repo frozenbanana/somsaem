@@ -14,3 +14,12 @@ Product.create(name: 'iPhone 8', description: 'It is a phone', quantity: 1, pric
 Product.create(name: 'iPhone X', description: 'It is a phone', quantity: 1, price: 2700, manufacturer: "Apple", model: "iPhone X", isRepairable: true, basePrice: 1100)
 Product.create(name: 'Galaxy S7', description: 'It is a phone', quantity: 1, price: 2100, manufacturer: "Apple", model: "Galaxy S7", isRepairable: true, basePrice: 900)
 Product.create(name: 'Galaxy S8', description: 'It is a phone', quantity: 1, price: 2660, manufacturer: "Apple", model: "Galaxy S8", isRepairable: true, basePrice: 1100)
+
+AppSetting.create
+# Repairable.create(model: 'Iphone 6s', manufacturer: 'Apple', model_year: 2016);
+# Repairable.create(model: 'Iphone 7', manufacturer: 'Apple', model_year: 2017);
+# Repairable.create(model: 'Iphone 7+', manufacturer: 'Apple', model_year: 2017);
+# Repairable.create(model: 'Iphone 8', manufacturer: 'Apple', model_year: 2018);
+# Repairable.create(model: 'Galaxy S7', manufacturer: 'Samsung', model_year: 2017);
+# Repairable.create(model: 'Galaxy S8', manufacturer: 'Samsung', model_year: 2018);
+# Repairable.create(model: 'Galaxy S9', manufacturer: 'Samsung', model_year: 2018);

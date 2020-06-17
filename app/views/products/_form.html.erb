@@ -32,6 +32,9 @@
   <%= form.text_field :basePrice, class: "form-control", placeholder: "Base Buy Price" %><br />
   <%= label_tag(:productimage, "Product Image") %>
   <%= form.file_field :productimage, class: "form-control" %><br />
+  <%= label_tag(:isRepairable, "Is Repairable") %>
+  <%= form.check_box :isRepairable, class: "form-control" %><br />
+  
   </div>
   </div>
 

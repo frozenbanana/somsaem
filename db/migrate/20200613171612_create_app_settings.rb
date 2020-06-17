@@ -11,6 +11,6 @@ class CreateAppSettings < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :app_settings, :singleton_guard, unique: true
+    # add_index :app_settings, :singleton_guard, unique: true
   end
 end

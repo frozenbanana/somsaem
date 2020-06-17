@@ -14,14 +14,14 @@ class SellDeviceForm extends React.Component {
                 value: null,
                 label: "Model",
                 options: [
-                    { value: "iphone5", label: "iPhone 6" },
-                    { value: "iphone5s", label: "iPhone 5s" },
-                    { value: "iphone6", label: "iPhone 6" },
-                    { value: "iphone6s", label: "iPhone 6s" },
-                    { value: "iphone6splus", label: "iPhone 6+s" },
-                    { value: "iphone7", label: "iPhone 7" },
-                    { value: "iphone7plus", label: "iPhone 7+" },
-                    { value: "iphone8", label: "iPhone 8" },
+                    { value: "iphone 5", label: "iPhone 5" },
+                    { value: "iphone 5s", label: "iPhone 5s" },
+                    { value: "iphone 6", label: "iPhone 6" },
+                    { value: "iphone 6s", label: "iPhone 6s" },
+                    { value: "iphone 6splus", label: "iPhone 6+s" },
+                    { value: "iPhone 7", label: "iPhone 7" },
+                    { value: "iphone 7plus", label: "iPhone 7+" },
+                    { value: "iPhone 8", label: "iPhone 8" },
                     { value: "iphone8plus", label: "iPhone 8+" },
                     { value: "iphonex", label: "iPhone X" },
                     { value: "iphonexr", label: "iPhone XR" },
@@ -190,15 +190,19 @@ class SellDeviceForm extends React.Component {
     }
 
     handleChange = (key, selectedOption) => {
-        console.log("hello", key, selectedOption);
         if (typeof selectedOption === "boolean") {
             console.log("selectedOption.value :", selectedOption.value);
             this.setState(
                 { [key]: { ...this.state[key], value: selectedOption } },
                 () => this.calcPrice()
             );
+        } else if (Array.isArray(selectedOption)) {
+            const newValues = selectedOption.map((el) => el.value);
+            this.setState(
+                { [key]: { ...this.state[key], value: newValues } },
+                () => this.calcPrice()
+            );
         } else if (selectedOption) {
-            console.log("selectedOption.value :", selectedOption.value);
             this.setState(
                 { [key]: { ...this.state[key], value: selectedOption.value } },
                 () => this.calcPrice()
@@ -217,10 +221,25 @@ class SellDeviceForm extends React.Component {
     };
 
     calcPrice = () => {
-        const { model, storage, previousRepairs, isCloudLocked } = this.state;
-        console.log("that the sheiet", this.state);
+        const {
+            model,
+            isServiceProviderLocked,
+            wearLevel,
+            isCloudLocked,
+            hasBootupDefect,
+            previousRepairs,
+            hasScreenDefect,
+            storage,
+        } = this.state;
+
         const params = {
             model: model.value,
+            serviceProviderLocked: isServiceProviderLocked.value,
+            wearLevel: wearLevel.value,
+            cloudLocked: isCloudLocked.value,
+            bootupDefect: hasBootupDefect.value,
+            screenDefect: hasScreenDefect.value,
+            previousRepairs: previousRepairs.value.length,
         };
 
         let query = Object.keys(params)
@@ -238,9 +257,9 @@ class SellDeviceForm extends React.Component {
                 console.log("response: ", resp);
 
                 if (resp.ok) {
-                    resp.json().then((json) => {
-                        console.log("json", json);
-                        this.setState({ estimatedPrice: json.basePrice });
+                    resp.json().then((result) => {
+                        console.log("json", result);
+                        this.setState({ estimatedPrice: result });
                     });
                 }
             })
