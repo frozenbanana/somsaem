@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.repairables.build
   end
 
   def edit
@@ -96,7 +97,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :manufacturer, :model, :quantity, :price, :productimage, :isRepairable, :basePrice)
+      params.require(:product).permit(:name, :description, :manufacturer, :model, :quantity, :price, :productimage, :isRepairable, :basePrice, repairables_attributes: [:price])
     end
 
      def price_estimate_params

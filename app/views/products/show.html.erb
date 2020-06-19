@@ -23,6 +23,10 @@
         <% else %>
         <p>Out of Stock</p>
         <% end %>
+        <p>Testing:</p>
+        <% @product.repairables.each do |repair| %>
+            <p><%= repair.price %></p>
+        <% end %>
     </div>
 </div>
 </div>

@@ -34,6 +34,14 @@
   <%= form.file_field :productimage, class: "form-control" %><br />
   <%= label_tag(:isRepairable, "Is Repairable") %>
   <%= form.check_box :isRepairable, class: "form-control" %><br />
+
+  <div>
+  <h3>Repair</h3>
+  <%= form.fields_for :repairables do |repairable_attributes|%>
+      <%= repairable_attributes.label :price, "Price:" %>
+      <%= repairable_attributes.text_field :price %>
+  <% end %>
+</div>
   
   </div>
   </div>

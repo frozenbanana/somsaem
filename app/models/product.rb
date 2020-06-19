@@ -4,6 +4,7 @@ class Product < ApplicationRecord
     has_many :line_items
     has_many :order_items
     has_many :repairables
+    accepts_nested_attributes_for :repairables
 
     validates :name, :manufacturer, :model, :description, :quantity, :price, :isRepairable, :basePrice, presence: true
     validates :model, uniqueness: true
