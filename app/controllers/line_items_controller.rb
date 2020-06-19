@@ -6,7 +6,7 @@ class LineItemsController < ApplicationController
     @product = Product.find(params[:product_id])
     @line_item = LineItem.new(product_id: @product.id, cart_id: @cart.id)
     if @line_item.save
-      redirect_to cart_path, notice: 'Item added successfully.'
+      redirect_to mycart_path, notice: 'Item added successfully.'
     else
       redirect_to @product, notice: 'Could not add item to cart.  Please try again.'
     end
@@ -14,7 +14,7 @@ class LineItemsController < ApplicationController
 
   def destroy
     @line_item.destroy
-    redirect_to cart_path, notice: 'Item removed from cart successfully.'
+    redirect_to mycart_path, notice: 'Item removed from cart successfully.'
   end
 
   private
