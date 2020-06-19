@@ -56,12 +56,15 @@
         <% end %>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Cart", cart_path, method: :get, :class => 'nav-link'%>
+          <%= link_to "My Cart", mycart_path, method: :get, :class => 'nav-link'%>
         </li>
       <% end %>
       <% if current_user %>
         <li class="nav-item">
-          <%= link_to "Cart", cart_path, method: :get, :class => 'nav-link'%>
+          <%= link_to "My Cart", mycart_path, method: :get, :class => 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Orders", myorders_path, method: :get, :class => 'nav-link'%>
         </li>
         <li class="nav-item">
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link'%>

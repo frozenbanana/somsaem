@@ -15,4 +15,8 @@ class AdminController < ApplicationController
         end
     end
 
+    def orders
+        @orders = Order.all
+    end
+
 end
