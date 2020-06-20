@@ -25,7 +25,9 @@
         <% end %>
         <p>Testing:</p>
         <% @product.repairables.each do |repair| %>
-            <p><%= repair.price %></p>
+            <p><%= repair.repair_name %></p>
+            <p><%= repair.estimated_time %></p>
+            <p><%= repair.repair_price %></p>
         <% end %>
     </div>
 </div>
