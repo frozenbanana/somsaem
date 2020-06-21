@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :repairs, :edit, :update, :destroy]
   before_action :authenticate_user!, :is_admin?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -55,12 +55,17 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def repairs
+    render :repairs
+  end
+
   def new
     @product = Product.new
     @product.repairables.build
   end
 
   def edit
+    @product.repairables.build
   end
 
   def create
