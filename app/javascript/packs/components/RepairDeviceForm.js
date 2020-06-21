@@ -40,11 +40,22 @@ class RepairDeviceForm extends React.Component {
      * @param {String} query Search Query.
      *
      */
-    fetchSearchResults = (updatedPageNo = "", query) => {
-        console.log("Starting fetchSearchResult..");
-        const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : "";
+    fetchSearchResults = (query) => {
+        // const params = {
+        //     search: query,
+        // };
+
+        // let query = Object.keys(params)
+        //     .map(
+        //         (k) =>
+        //             encodeURIComponent(k) + "=" + encodeURIComponent(params[k])
+        //     )
+        //     .join("&");
+
+        const searchUrl = "http://localhost:3000/repairables?search";
+
+
         // By default the limit of results is 20
-        const searchUrl = `http://localhost:3000/search/index?search_index%5Bquery%5D=${query}`;
         console.log(`Starting fetchSearchResult with url: ${searchUrl}`);
         if (this.cancel) {
             // Cancel the previous request before making a new request
@@ -79,45 +90,66 @@ class RepairDeviceForm extends React.Component {
                 }
             });
     };
-    componentDidMount() {
-        fetch("http://localhost:3000/products.json").then((resp) => {
+
+    getRepairablesFromApi = (baseUrl, query) => {
+        let url = baseUrl;
+        if (query) {
+            console.log('params:', encodeURIComponent('search') + "=" + encodeURIComponent(query));
+            url += "?"+encodeURIComponent('search') + "=" + encodeURIComponent(query);
+        }
+        // url += ".json";
+        console.log('fetching from', url, 'query:', query);
+        fetch(url).then((resp) => {
             if (resp.ok) {
                 resp.json().then((products) => {
                     console.log("Result: ", products);
-                    this.setState({ result: products });
+                    this.setState({ results: products });
                 });
             }
         });
     }
 
+    componentDidMount() {
+        this.getRepairablesFromApi("http://localhost:3000/repairables");
+        // fetch("http://localhost:3000/repairables.json").then((resp) => {
+        //     if (resp.ok) {
+        //         resp.json().then((products) => {
+        //             console.log("Result: ", products);
+        //             this.setState({ results: products });
+        //         });
+        //     }
+        // });
+    }
+
     handleChange = (selectedOption) => {
         console.log("selected", selectedOption);
-        this.setState({ query: selectedOption.value }, () =>
-            console.log(`Option selected:`, this.state)
+        this.setState({ query: selectedOption.value }, () => { 
+            console.log('query:', this.state.query);
+            this.getRepairablesFromApi("http://localhost:3000/repairables", this.state.query);
+            }
         );
     };
 
     renderSearchResults = () => {
         const { results } = this.state;
+        const imgStyle = {height: '225px', width: '100%', display: 'block'}
+        console.log('trying to render result', results);
         if (Object.keys(results).length && results.length) {
             return (
-                <div className="results-container">
+                <div className="row justify-content-between align-items-center">
                     {results.map((product) => {
                         return (
-                            <a
-                                key={product.id}
-                                href={product.previewURL}
-                                className="result-items"
-                            >
-                                <div className="image-wrapper">
-                                    <img
-                                        className="image"
-                                        src={product.previewURL}
-                                        alt={product.model}
-                                    />
+                            <div className="card mb-4 box-shadow">
+                                <img className="card-img-top" 
+                                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" 
+                                alt="Thumbnail [100%x225]" 
+                                style={imgStyle}
+                                src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1728a7d1574%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1728a7d1574%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" 
+                                data-holder-rendered="true"/>
+                                <div className="card-body">
+                                    <p className="card-text"> {product.name} </p>
                                 </div>
-                                {product.model}
-                            </a>
+                            </div>
                         );
                     })}
                 </div>
@@ -143,6 +175,7 @@ class RepairDeviceForm extends React.Component {
                     options={options}
                 />
                 {/*Result*/}
+                <br/>
                 {this.renderSearchResults()}
             </div>
         );
