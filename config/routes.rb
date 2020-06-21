@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/admin/import', :to => 'admin#newimport'
   post '/admin/import', :to => 'admin#createimport'
   get '/admin/orders', :to => 'admin#orders'
-  resources :admin
+  get '/admin/orders/:id', :to => 'admin#order'
 
   get 'cart', to: 'carts#show', as: 'mycart'
   

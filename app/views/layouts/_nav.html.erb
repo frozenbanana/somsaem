@@ -25,7 +25,8 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/products/new">Add Single Product</a>
-              <a class="dropdown-item" href="/admin/import">Add Multiple Products</a> 
+              <a class="dropdown-item" href="/admin/import">Add Multiple Products</a>
+              <a class="dropdown-item" href="/admin/orders">Orders</a>
           </li>
       <% elsif current_user && !current_user.admin? %>
         <li class="nav-item">

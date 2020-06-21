@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
     before_action :authenticate_user!, :is_admin?
+    before_action :set_order, only: [:order]
 
     def index
     end
@@ -18,5 +19,15 @@ class AdminController < ApplicationController
     def orders
         @orders = Order.all
     end
+
+    def order
+    end
+
+    private
+
+    def set_order
+        @order = Order.find(params[:id])
+    end
+
 
 end

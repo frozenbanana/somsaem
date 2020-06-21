@@ -1,24 +1,24 @@
-<% if !@orders.nil? %>
-    <% @orders.each do |order| %>
-        <h4>Summary for Order <%= order.id %> for <%= order.email %></h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-        <% order.order_items.each do |item| %>
-            <% product = Product.find(item.product_id) %>
-            <tr>
-                <th scope="col"><%= link_to product.name, product_path(product) %></th>
-                <th scope="col">$<%= '%.2f' % product.price.to_i %></th>
-            </tr>
-        <% end %>
-            <th scope="col">Total</th>
-            <th scope="col">$<%= '%.2f' % order.total.to_i %></th>
-        </table>
-    <% end %>
+<h2>All Orders</h2>
+
+<% if @orders.length === 0 %>
+    No orders have been made.
 <% else %>
-    You have no orders.
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Order Total</th>
+            </tr>
+        </thead>
+    <% @orders.each do |order| %>
+        <tr>
+            <th scope="col"><a href=<%= "/admin/orders/" + order.id.to_s %>><%= order.id %></a></th>
+            <th scope="col"><%= order.created_at %></th>
+            <th scope="col"><%= mail_to order.email %></th>
+            <th scope="col">$<%= '%.2f' % order.total %></th>
+        </tr>
+    <% end %>
+    </table>
 <% end %>
