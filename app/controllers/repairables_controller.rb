@@ -4,17 +4,18 @@ class RepairablesController < ApplicationController
   # GET /repairables
   # GET /repairables.json
   def index
+    # binding.pry
     if not params[:search].present?
       @repairables = Product.all.where(:isRepairable => true)
     else
       @repairables = Product.where(:isRepairable => true).search(params[:search])
-      render :json => @repairables, status: :ok}
     end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @repairables, status: :ok}
     end
+    # render :json => @repairables, status: :ok
   end
 
   # GET /repairables/1

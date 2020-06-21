@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @products, status: :ok}
+      format.json { render :json => @products, status: :ok }
     end
     # format.json { render json: @products, status: :ok}
   end
