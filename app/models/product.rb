@@ -25,8 +25,8 @@ class Product < ApplicationRecord
           product.description = row[3]
           product.quantity = row[4]
           product.price = row[5]
-          product.isRepairable = row[6]
-          product.basePrice = row[7]
+          product.is_repairable = row[6]
+          product.base_price = row[7]
           product.save
         end
       end

@@ -22,8 +22,8 @@ class ProductsController < ApplicationController
     product = Product.find_by(model: price_estimate_params[:model])
     setting = AppSetting.first_or_create
 
-    if product.basePrice.present?
-      price  = product.basePrice
+    if product.base_price.present?
+      price  = product.base_price
     else
       price = -1
     end

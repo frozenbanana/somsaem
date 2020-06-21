@@ -6,9 +6,9 @@ class RepairablesController < ApplicationController
   def index
     # binding.pry
     if not params[:search].present?
-      @repairables = Product.all.where(:isRepairable => true)
+      @repairables = Product.all.where(:is_repairable => true)
     else
-      @repairables = Product.where(:isRepairable => true).search(params[:search])
+      @repairables = Product.where(:is_repairable => true).search(params[:search])
     end
 
     respond_to do |format|
