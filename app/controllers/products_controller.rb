@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :repairs, :edit, :update, :destroy]
   before_action :authenticate_user!, :is_admin?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -8,6 +8,12 @@ class ProductsController < ApplicationController
     else
       @products = Product.search(params[:search])
     end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @products, status: :ok }
+    end
+    # format.json { render json: @products, status: :ok}
   end
 
   # GET /products/estimate_price
@@ -16,8 +22,8 @@ class ProductsController < ApplicationController
     product = Product.find_by(model: price_estimate_params[:model])
     setting = AppSetting.first_or_create
 
-    if product.basePrice.present?
-      price  = product.basePrice
+    if product.base_price.present?
+      price  = product.base_price
     else
       price = -1
     end
@@ -49,12 +55,17 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def repairs
+    render :repairs
+  end
+
   def new
     @product = Product.new
     @product.repairables.build
   end
 
   def edit
+    @product.repairables.build
   end
 
   def create

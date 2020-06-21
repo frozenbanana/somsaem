@@ -1,0 +1,28 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-6 product_img">
+        <% if @product.productimage.attached? %>
+        <img src="<%=(url_for(@product.productimage))%>" class="img-fluid">
+        <% else %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Picture_Not_Yet_Available.png" class="img-fluid">
+        <% end %>
+    </div>
+    <div class="col-md-6 product_content">
+        <h4><%= @product.name %></h4>
+        <p><%= @product.description %></p>
+        <div class="space-ten"></div>
+        <br />
+
+        <% @product.repairables.each do |repair| %>
+            <p><%= repair.repair_name %></p>
+            <p><%= repair.estimated_time %></p>
+            <p><%= repair.repair_price %></p>
+        <% end %>
+    </div>
+</div>
+</div>
+
+<% if is_admin? %>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<% end %>
