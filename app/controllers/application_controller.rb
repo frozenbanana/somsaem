@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_cart
-    helper_method :is_admin?
+    helper_method :is_admin?, :set_user
 
     private
 
@@ -25,5 +25,9 @@ class ApplicationController < ActionController::Base
       rescue ActiveRecord::RecordNotFound
       @cart = Cart.create
       session[:cart_id] = @cart.id
+    end
+
+    def set_user
+      @user = current_user
     end
   end
