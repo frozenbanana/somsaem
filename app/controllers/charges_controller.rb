@@ -22,9 +22,10 @@ class ChargesController < ApplicationController
     @amount/=100
     @order = Order.create(email: params[:stripeEmail], total: @amount)
     @cart.line_items.each do |item|
-      item.product.quantity-=1
+      product = Product.find(item.product.id)
+      product.quantity-=1
+      product.save
       OrderItem.create(order_id: @order.id, product_id: item.product.id, price: item.product.price)
-      item.product.save
     end
 
     @cart.destroy

@@ -57,6 +57,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.repairables.build
   end
 
   def edit
@@ -64,7 +65,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
+    binding.pry
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -102,7 +103,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :manufacturer, :model, :quantity, :price, :productimage, :isRepairable, :basePrice)
+      params.require(:product).permit(:name, :description, :manufacturer, :model, :quantity, :price, :productimage, :is_repairable, :is_buying, :is_selling, :base_price, repairables_attributes: [:repair_name, :estimated_time, :repair_price])
     end
 
      def price_estimate_params
