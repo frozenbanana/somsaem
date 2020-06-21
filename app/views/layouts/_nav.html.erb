@@ -1,39 +1,14 @@
-<% if false %>
-<nav class="site-header sticky-top py-1">
-  <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="/" aria-label="Product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-    </a>
-    <a class="py-2 d-none d-md-inline-block" href="#">About</a>
-    <a class="py-2 d-none d-md-inline-block" href="/repairables">Repairs</a>
-    <a class="py-2 d-none d-md-inline-block" href="/products">Products</a>
-    <%= link_to "Sell Device", sales_path, method: :get, :class => 'py-2 d-none d-md-inline-block'%>
-    <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
-    <%= link_to "Cart", cart_path(@cart), method: :get, :class => 'py-2 d-none d-md-inline-block'%>
-    <% if current_user %>
-      <% if current_user.admin? %>
-        <%= link_to "Admin", admin_index_path, method: :get, :class => 'py-2 d-none d-md-inline-block'%>
-      <% end %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'py-2 d-none d-md-inline-block'%>
-    <% else %>
-      <a class="py-2 d-none d-md-inline-block" href="/users/sign_up">Sign Up</a>
-      <a class="py-2 d-none d-md-inline-block" href="/users/sign_in">Sign In</a>
-    <% end %>
-  </div>
-  </nav>
-<% end %>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/products">Products</a>
+        <a class="nav-link" href="/products">Buy a Device</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/repairables">Repair Device</a>
+        <a class="nav-link" href="/repairables">Repair My Device</a>
       </li>
       <li class="nav-item">
-        <%= link_to "Sell Device", sales_path, method: :get, :class => 'nav-link'%>
+        <%= link_to "Sell My Device", sales_path, method: :get, :class => 'nav-link'%>
       </li>
     </ul>
   </div>  
@@ -45,29 +20,24 @@
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
-      <% if current_user %>
-        <% if current_user.admin?%>
+      <% if current_user && current_user.admin? %>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/products/new">Add Single Product</a>
               <a class="dropdown-item" href="/admin/import">Add Multiple Products</a> 
           </li>
-        <% end %>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "My Cart", mycart_path, method: :get, :class => 'nav-link'%>
-        </li>
-      <% end %>
-      <% if current_user %>
+      <% elsif current_user && !current_user.admin? %>
         <li class="nav-item">
           <%= link_to "My Cart", mycart_path, method: :get, :class => 'nav-link'%>
         </li>
         <li class="nav-item">
           <%= link_to "My Orders", myorders_path, method: :get, :class => 'nav-link'%>
         </li>
+      <% end %>
+      <% if current_user %>
         <li class="nav-item">
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link'%>
+          <%= link_to "Sign Out", destroy_session_path(current_user), method: :delete, :class => 'nav-link'%>
         </li>
       <% else %>
         <li class="nav-item">
