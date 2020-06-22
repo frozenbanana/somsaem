@@ -23,7 +23,7 @@ class ProductSearchForm extends React.Component {
                 "=" +
                 encodeURIComponent(query);
         }
-        console.log("fetching from", url, "query:", query);
+        // console.log("fetching from", url, "query:", query);
         return fetch(url).then((resp) => {
             return resp.json();
         });
@@ -34,7 +34,7 @@ class ProductSearchForm extends React.Component {
         this.getRepairablesFromApi(
             "http://localhost:3000/products.json"
         ).then((products) => {
-            console.log("Result: ", products);
+            // console.log("Result: ", products);
             this.setState({ results: products });
             if (this.state.options.length === 0) {
                 const newOptions = products.map((product) => {
@@ -46,14 +46,14 @@ class ProductSearchForm extends React.Component {
     }
 
     handleChange = (selectedOption) => {
-        console.log("selected", selectedOption);
+        // console.log("selected", selectedOption);
         this.setState({ query: selectedOption.value }, () => {
-            console.log("query:", this.state.query);
+            // console.log("query:", this.state.query);
             this.getRepairablesFromApi(
                 "http://localhost:3000/repairables.json",
                 this.state.query
             ).then((products) => {
-                console.log("Result: ", products);
+                // console.log("Result: ", products);
                 this.setState({ results: products });
             });
         });
@@ -62,13 +62,13 @@ class ProductSearchForm extends React.Component {
     renderSearchResults = () => {
         const { results } = this.state;
         const imgStyle = { height: "225px", width: "100%", display: "block" };
-        console.log("trying to render result", results);
+        // console.log("trying to render result", results);
         if (Object.keys(results).length && results.length) {
             return (
                 <div className="row justify-content-between align-items-center">
                     {results.map((product) => {
                         return (
-                                <div className="card mb-4 box-shadow">
+                                <div key={product.id} className="card mb-4 box-shadow">
                                     <img
                                         className="card-img-top"
                                         data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
@@ -87,7 +87,7 @@ class ProductSearchForm extends React.Component {
                                             : product.quantity + " In Stock"
                                             }
                                         </p>
-                                        <a href={"/products/" + product.id}><button class="btn btn-sm btn-outline-secondary mr-1">View More</button></a>
+                                        <a href={"/products/" + product.id}><button className="btn btn-sm btn-outline-secondary mr-1">View More</button></a>
                                     </div>
                                 </div>
                         );
@@ -99,7 +99,7 @@ class ProductSearchForm extends React.Component {
 
     render() {
         const { query, options } = this.state;
-        console.log("This is query", query);
+        // console.log("This is query", query);
         return (
             <div className="container">
                 {/*Heading*/}

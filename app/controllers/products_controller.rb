@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def estimate_price
     product = Product.find_by(model: price_estimate_params[:model])
-    setting = AppSetting.first_or_create
+    setting = AppSetting.instance
 
     if product.base_price.present?
       price  = product.base_price
