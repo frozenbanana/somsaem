@@ -1,0 +1,2 @@
+module AppSettingHelper
+end

@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'pages#index'
   get 'sales', to: 'sales#index'
-
   get '/admin/import', :to => 'admin#newimport'
   post '/admin/import', :to => 'admin#createimport'
   get '/admin/orders', :to => 'admin#orders'
   get '/admin/orders/:id', :to => 'admin#order'
+
+  resources :app_setting, only: [:edit, :update, :show]
 
   get 'cart', to: 'carts#show', as: 'mycart'
   
