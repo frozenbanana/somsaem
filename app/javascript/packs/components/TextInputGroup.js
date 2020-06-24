@@ -21,20 +21,24 @@ const TextInputGroup = ({ fieldRows, handleChange }) => {
                                 }
                             />
                         </div>
-                        <div className="col-md-6 mb-3">
-                            <label htmlFor={fieldRow.right.key}>
-                                {fieldRow.right.label}
-                            </label>
-                            <input
-                                key={fieldRow.right.key}
-                                type="text"
-                                className="form-control"
-                                key={fieldRow.right.key}
-                                onChange={(e) =>
-                                    handleChange(fieldRow.right.key, e)
-                                }
-                            />
-                        </div>
+                        {fieldRow.right ? (
+                            <div className="col-md-6 mb-3">
+                                <label htmlFor={fieldRow.right.key}>
+                                    {fieldRow.right.label}
+                                </label>
+                                <input
+                                    key={fieldRow.right.key}
+                                    type="text"
+                                    className="form-control"
+                                    key={fieldRow.right.key}
+                                    onChange={(e) =>
+                                        handleChange(fieldRow.right.key, e)
+                                    }
+                                />
+                            </div>
+                        ) : (
+                            <br className="mb-4" />
+                        )}
                     </div>
                 );
             })}

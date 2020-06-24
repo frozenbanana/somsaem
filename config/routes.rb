@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :search, only: [:index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'pages#index'
+  get 'send/:id', to: 'pages#sendForm'
   get 'sales', to: 'sales#index'
   get '/admin/import', :to => 'admin#newimport'
   post '/admin/import', :to => 'admin#createimport'

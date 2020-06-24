@@ -25,7 +25,6 @@ export class PersonalDetailsForm extends React.Component {
                         noValidate=""
                         onSubmit={nextStep}
                     >
-                        {console.log("he", values)}
                         <TextInputGroup
                             fieldRows={values.fieldRows}
                             handleChange={handleChange}

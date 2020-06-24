@@ -17,7 +17,6 @@ export class PersonalDetailsForm extends React.Component {
         const { values } = this.props;
         const { handleChange, prevStep, nextStep } = this.props;
         const { ledger, styleStep } = this.props;
-        console.log("knick", values);
         const isAcceptTerm = values.yesNoQuestions[0].value;
         const isDevReset = values.yesNoQuestions[1].value;
         return (
@@ -69,7 +68,6 @@ export class PersonalDetailsForm extends React.Component {
                                 </button>
                             </div>
                             <div className="col-md-6 mb-3">
-				{console.log('bools: ',!isDevReset && !isAcceptTerm, !isDevReset, !isAcceptTerm)}
                                 <button
                                     className="btn btn-success btn-lg btn-block"
                                     type="button"
